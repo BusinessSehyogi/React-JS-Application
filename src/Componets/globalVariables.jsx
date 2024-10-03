@@ -1,3 +1,3 @@
 export const globalVariable = {
-    value: "localhost:8080",
+    value: "192.168.33.55:8080",
 };
