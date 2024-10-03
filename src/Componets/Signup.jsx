@@ -19,8 +19,17 @@ function Signup({ onClose }) {
 
     const handleClick = async (event) => {
         event.preventDefault();
-        let url = `http://${globalVariable.value}/registerUser`;
+        
+        let url = `http://${globalVariable.value}/getCurrentDateTime`;
         let response = await fetch(url, {
+            method: 'get',
+        });
+
+        let data = response.json;
+        console.log(data);
+
+        url = `http://${globalVariable.value}/registerUser`;
+        response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,13 +44,14 @@ function Signup({ onClose }) {
                 "category": UserType,
                 "visible": true,
                 "emailVerified": false,
-                "contactnoVerified": false
+                "contactnoVerified": false,
+                "dateTimeOfRegistration": data
             }),
         });
 
         if (response.status === 200) {
             alert('Registration is successful');
-            onClose(); // Close the modal on success
+            // onClose(); // Close the modal on success
             navigate("/"); // Navigate to home or another page
         } else {
             alert("Already registered");
