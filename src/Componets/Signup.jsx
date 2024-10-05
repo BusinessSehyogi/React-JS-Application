@@ -20,14 +20,14 @@ function Signup({ onClose }) {
     const handleClick = async (event) => {
         event.preventDefault();
         
+        //fetch date from server and pass in the body to add current date in database.
         let url = `http://${globalVariable.value}/getCurrentDateTime`;
         let response = await fetch(url, {
             method: 'get',
         });
+        let date = response.json;
 
-        let data = response.json;
-        console.log(data);
-
+        
         url = `http://${globalVariable.value}/registerUser`;
         response = await fetch(url, {
             method: 'POST',
@@ -45,7 +45,7 @@ function Signup({ onClose }) {
                 "visible": true,
                 "emailVerified": false,
                 "contactnoVerified": false,
-                "dateTimeOfRegistration": data
+                "dateTimeOfRegistration": date
             }),
         });
 
