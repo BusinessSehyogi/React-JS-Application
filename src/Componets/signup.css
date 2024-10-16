@@ -1,155 +1,106 @@
-/* Prevent body scroll when modal is open */
-body.modal-open {
-    overflow: hidden;
-}
-
-/* Modal Overlay */
+/* Container for the signup modal */
 .signup-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
-    align-items: center; /* Center vertically */
-    z-index: 999; /* Ensure it’s above other content */
+    align-items: center;
+    height: 100vh; /* Full height */
+    background-color: rgba(0, 0, 0, 0.6); /* Dark background with transparency */
 }
 
-/* Modal Content */
-.modal-content {
-    background: white;
-    border-radius: 20px; /* Oval shape */
-    padding: 20px; /* Padding inside the modal */
-    width: 90%; /* Responsive width */
-    max-width: 400px; /* Maximum width */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    margin: 5% auto; /* Center with top/bottom margin for small screens */
-}
-
-/* Modal Title */
-.modal-title {
+/* Styling for the modal content */
+.modal-content-signup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
     text-align: center;
-    margin: 20px 0; /* Margin to give space above */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 11vh;
+  
 }
 
-/* User Type Selection */
+/* Header of the modal */
+.modal-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* User type button container (for Founder and Investor buttons) */
 .user-type-selection {
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 15px; /* Slightly reduced bottom margin */
+    justify-content: space-between; /* Space between the two buttons */
+    margin-bottom: 20px; /* Space between buttons and the form */
 }
 
-.user-type-btn {
-    padding: 8px 12px; /* Adjusted padding */
-    border: 1px solid #007bff;
-    background-color: white;
-    color: #007bff;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.user-type-btn.active {
-    background-color: #007bff;
-    color: white;
-}
-
-/* Signup Form Styles */
-.signup-form {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Name Container */
-.name-inputs {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px; /* Space below name fields */
-}
-
-.name-inputs input {
-    flex: 1; /* Equal space for both fields */
-    margin-right: 10px; /* Space between fields */
-    min-width: 0; /* Prevent overflow */
-}
-
-.name-inputs input:last-child {
-    margin-right: 0; /* No margin on the last input */
-}
-
-/* Input Fields */
-.signup-form input {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Signup Button */
-.signup-button {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
+/* Individual button styles */
+.button-signup {
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-}
-
-/* Link Account Button */
-.link-account {
-    margin-top: 10px;
-    background: transparent;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-}
-
-/* Go Back Button */
-.go-back-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    z-index: 1000; /* Ensure it’s above the modal */
+    width: 48%; /* Make both buttons equal width */
 }
 
-.go-back-button:hover {
-    background-color: #0056b3;
+/* Close button for the modal */
+.Close-button-signup {
+    position: absolute;
+    right: 38vw;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: white;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 90%; /* Full width on small screens */
-        padding: 15px; /* Adjust padding */
-        max-height: 90%; /* Restrict max height to avoid overflow */
-        overflow-y: auto; /* Enable scrolling if content is too tall */
-        margin: 5% auto; /* Center with margin for small screens */
-    }
+/* Align form fields (if any additional form fields are below the buttons) */
+.form-field {
+    margin: 10px 0;
+    width: 100%;
+}
 
-    .user-type-selection {
-        flex-direction: column; /* Stack buttons vertically */
-    }
+.name-signup {
+    width: 11.7vw;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
 
-    .user-type-btn {
-        margin-bottom: 10px; /* Space between buttons */
-        width: 100%; /* Full width for buttons */
-    }
+.signup-signup-form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border-radius: 5px;
+}
 
-    .name-inputs {
-        flex-direction: column; /* Stack name inputs vertically on small screens */
-    }
+.name-inputs-signup{
+    display: flex;
+    margin-right: 1vw;
+    justify-content: start;
+    gap: 0.3vw;
+}
 
-    .name-inputs input {
-        margin-right: 0; /* Remove right margin for stacking */
-        margin-bottom: 10px; /* Add space between stacked fields */
-    }
+/* Ensure form fields are centered and have some spacing */
+.founder-signup-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.signup-investor-button,
+.signup-founder-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 24vw;
 }

@@ -7,13 +7,15 @@
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to bottom right, #e0eafc, #cfdef3);
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    overflow-y: auto;
 }
 
-.home {
+.home-home {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow: auto;
 }
 
 .header {
@@ -116,20 +118,18 @@ body {
     transition: transform 0.3s;
 }
 
-.text-box:hover {
-    transform: translateY(-5px);
-}
-
 .text-box h1 {
     font-size: 28px;
     color: #003366;
     margin-bottom: 15px;
+    cursor: default;
 }
 
 .text-box p {
     font-size: 16px;
     color: #555;
     margin-bottom: 20px;
+    cursor: default;
 }
 
 .get-started {
@@ -150,9 +150,9 @@ body {
     transition: transform 0.3s;
 }
 
-.image-box img:hover {
+/* .image-box img:hover {
     transform: scale(1.05);
-}
+} */
 
 .features {
     text-align: center;
@@ -240,4 +240,59 @@ body {
         flex-direction: column;
         align-items: center;
     }
+}
+
+.founders {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.founders .logo img {
+    max-width: 150px; /* Adjust logo size */
+    margin-bottom: 20px;
+}
+
+.founders h2 {
+    font-size: 24px;
+    color: #003366; /* Text color */
+    margin-bottom: 10px;
+}
+
+.founders h3 {
+    font-size: 20px;
+    color: rgb(65, 161, 129);
+    margin-bottom: 10px;
+}
+
+.founders p {
+    font-size: 18px;
+    color: #555;
+}
+.container{
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+}
+.logo-founder{
+    display: flex;
+    justify-content: space-evenly;
+    height: 131px;
+}
+.founder-details{
+    display: flex;
+    justify-content: space-evenly;
+}
+.Investor-details{
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 99px
+
 }

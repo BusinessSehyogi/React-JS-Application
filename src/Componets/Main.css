@@ -1,0 +1,1353 @@
+/* Container styling */
+.create-post-contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+    overflow-x: scroll;
+  }
+  
+  /* Form styling */
+  .create-post-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* input[type="text"], */
+  .links-create-post {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+    outline: none;
+  }
+  
+  input[type="file"] {
+    border: none;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #007bff;
+  }
+  
+  /* Submit button styling */
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .create-post-form {
+      padding: 20px;
+    }
+  
+    .form-group label {
+      font-size: 14px;
+    }
+  
+    .submit-button {
+      font-size: 14px;
+    }
+  }
+  
+  .sideba {
+    background-color: #1B1F3B;
+    min-height: 100vh;
+    color: white;
+    padding: 17px;
+    width: 305px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: width 0.3s, opacity 0.3s;
+    top: 0;
+}
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Adjusting both sidebar and user-info */
+.sideba,
+.user-info {
+    margin-top: 61px;
+    padding-top: 8px;
+    min-height: 101vh;
+    /* overflow-y: auto; */
+    display: flex;
+    /* align-items: flex-end; */
+    position: fixed;
+    margin-right: 84vw;
+}
+
+/* If flexbox or grid is used, check their alignment */
+.container {
+    align-items: flex-start;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Ensure the overall layout container takes up the full height */
+.user-info {
+    background-color: #1B1F3B;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+.image-previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .image-preview {
+    width: 150px;  /* Adjust the width */
+    height: 150px;  /* Adjust the height */
+    object-fit: cover; /* Ensures the image covers the box while maintaining aspect ratio */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .main-content {
+    overflow-x: auto; /* Enable horizontal scrolling for main content */
+    white-space: nowrap; /* Prevent wrapping, allow horizontal overflow */
+    padding: 20px;
+  }
+  
+  .create-post-contain {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form {
+    min-width: 600px; /* Ensure form has a minimum width */
+  }
+  
+  /* textarea, input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+  } */
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px; /* Increased width from 400px to 500px */
+    max-width: 90%;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Space between rows */
+}
+
+.form-field {
+    flex: 1; /* Equal space for all fields */
+    margin-right: 10px; /* Space between fields */
+}
+
+.form-field:last-child {
+    margin-right: 0; /* Remove margin for the last field */
+}
+
+.label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: 100%; /* Full width for inputs */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.otp-button {
+    margin-top: 10px; /* Add margin to OTP button */
+}
+
+.file-message {
+    display: block; /* Ensure it takes a new line */
+    margin-top: 5px; /* Add some spacing above the message */
+    font-size: 12px;
+    color: #888; /* Gray color for the message */
+}
+
+.profile-pic-preview {
+    margin-top: 10px; /* Add margin for the profile preview */
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    border-radius: 50%; /* Make it circular */
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Add margin at the top for buttons */
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc; /* Disable button color */
+    cursor: not-allowed; /* Not allowed cursor */
+}
+
+/* General dashboard container */
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: #F4F6F9;
+    padding-top: 80px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #1B1F3B;
+    min-height: 100vh;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: width 0.3s, opacity 0.3s;
+    top: 0;
+}
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Adjusting both sidebar and user-info */
+.sidebar,
+.user-info {
+    margin-top: -5px;
+    padding-top: 0;
+    min-height: 102vh;
+    overflow-y: auto;
+}
+
+/* If flexbox or grid is used, check their alignment */
+.container {
+    align-items: flex-start;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Ensure the overall layout container takes up the full height */
+.user-info {
+    background-color: #1B1F3B;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+
+/* Main content section */
+.main-content {
+    flex-grow: 1;
+    padding-top: 0;
+    margin-top: 0;
+    background-color: #F4F6F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Add button for "Create Post" */
+.create-post-button {
+    padding: 12px 24px;
+    background-color: #1B1F3B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px;
+    font-size: 16px;
+    height: 9vh;
+    width: 22vh
+}
+
+.create-post-button:hover {
+    background-color: #333;
+}
+
+/* Post section styling */
+.post-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Post card */
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+/* General dashboard container */
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: #F4F6F9;
+    padding-top: 80px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #1B1F3B;
+    min-height: 100vh;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: width 0.3s, opacity 0.3s;
+    top: 0;
+    align-items: flex-start;
+}
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Adjusting both sidebar and user-info */
+.sidebar,
+.user-info {
+    margin-top: -10px;
+    padding-top: 0;
+    min-height: 102vh;
+    overflow-y: auto;
+}
+
+/* If flexbox or grid is used, check their alignment */
+.container {
+    align-items: flex-start;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Remove any margin or padding that could be causing extra space */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* Ensure the overall layout container takes up the full height */
+.user-info {
+    background-color: #1B1F3B;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+
+/* Style for the sidebar label when closed */
+.sidebar-label {
+    writing-mode: vertical-rl;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar.closed {
+    width: 0;
+    overflow: hidden;
+}
+
+/* Sidebar title */
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+/* Menu item styling */
+.menu-item {
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.menu-item:hover {
+    color: #99ffce;
+}
+
+/* Logout button */
+.logout-button {
+    margin-top: 40px;
+    background-color: #ffffff;
+    color: rgb(177, 57, 57);
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Style for the user info label when closed */
+.user-info-label {
+    writing-mode: vertical-rl;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    margin: 0;
+}
+
+.user-info.closed {
+    width: 0;
+    overflow: hidden;
+}
+
+/* Profile image */
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* User info title */
+.user-info h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* User info text */
+.user-info p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Main content section */
+.main-content {
+    flex-grow: 1; 
+    padding-top: 0;
+    margin-top: 0px;
+    background-color: #F4F6F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: scroll;
+     /* margin-right: 71vw; */
+}
+
+/* Company logo styling */
+.dashboard-header {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #1B1F3B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search-button:hover {
+    background-color: #555;
+}
+
+.company-logo {
+    height: 50px;
+    max-width: 100%;
+}
+
+/* Vertical line styling */
+.vertical-line {
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    position: absolute;
+    left: 250px;
+    top: 80px;
+}
+
+/* Title above the post section */
+.business-ideas-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1B1F3B;
+    text-align: center;
+}
+
+/* Post section styling */
+.post-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Individual post card */
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Post image */
+.post-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Post stats (likes and comments) */
+.post-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Toggle button styling */
+.toggle-button {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    margin: 2px auto;
+    padding: 10px;
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar.closed .icon-container {
+    margin-top: 50px;
+}
+
+.sidebar.closed .toggle-button {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (mobile phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .post-card {
+        width: 100%;
+    }
+
+    .toggle-button {
+        font-size: 20px;
+        padding: 8px;
+    }
+}
+
+/* Medium devices (tablets, 576px to 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .post-card {
+        width: 250px;
+    }
+}
+
+/* Large devices (desktops, 768px and above) */
+@media (min-width: 768px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .post-card {
+        width: 300px;
+    }
+}
+
+.create-post-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 15vh;
+    background-color: #E6EEF3;
+    padding: 25px;
+    margin-top: -428px;
+    margin-left: -20px;
+    
+}
+
+
+.sideb {
+    background-color: #1B1F3B;
+    min-height: 100vh;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: width 0.3s, opacity 0.3s;
+    top: 0;
+    align-items: flex-start;
+}
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.dashboard-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Adjusting both sidebar and user-info */
+.sideb,
+.user-info {
+    margin-top: 81px;
+    padding-top: 0;
+    min-height: 102vh;
+    overflow-y: auto;
+}
+
+/* If flexbox or grid is used, check their alignment */
+.container {
+    align-items: flex-start;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Ensure the overall layout container takes up the full height */
+.user-info {
+    background-color: #1B1F3B;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+
+.post-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Post card */
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+/* Title above the post section */
+.business-ideas-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1B1F3B;
+    text-align: center;
+}
+
+/* Post section styling */
+.post-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Individual post card */
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Post image */
+.post-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Post stats (likes and comments) */
+.post-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.toggle-button {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    margin: 2px auto;
+    padding: 10px;
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar.closed .icon-container {
+    margin-top: 50px;
+}
+
+.sidebar.closed .toggle-button {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #e0eafc, #cfdef3);
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+
+.header {
+    width: 100%;
+    height: 80px; /* Fixed height */
+    background-color: rgb(65, 161, 129);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* Adjusted padding */
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+    width: 225px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px; /* Maintain space between nav items */
+}
+
+.nav-links span {
+    cursor: pointer;
+    font-weight: bold;
+    color: #f4f4f9;
+    transition: color 0.3s;
+}
+
+.nav-links span:hover {
+    color: #ffcc00;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Button Styles */
+.button {
+    background-color: #ffcc00;
+    border: none;
+    color: #003366;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #e5b800;
+    transform: scale(1.05);
+}
+
+.greeting {
+    margin-right: 20px;
+    font-weight: bold;
+    color: #f4f4f9;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px; /* Keep the top padding */
+    flex-wrap: wrap;
+    margin-top: 80px; /* Ensure this matches the header height */
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 40px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.text-box {
+    flex: 1;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.text-box h1 {
+    font-size: 28px;
+    color: #003366;
+    margin-bottom: 15px;
+    cursor: default;
+}
+
+.text-box p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    cursor: default;
+}
+
+.get-started {
+    font-weight: bold;
+    color: #003366;
+}
+
+.image-box {
+    flex: 1;
+    max-width: 500px;
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+/* .image-box img:hover {
+    transform: scale(1.05);
+} */
+
+.features {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.features h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: rgb(65, 161, 129);
+}
+
+.feature-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    flex: 1;
+    max-width: 300px;
+    margin: 10px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-item h3 {
+    font-size: 20px;
+    color: rgb(65, 161, 129);
+}
+
+.footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
+        height: auto; /* Allow dynamic height */
+    }
+
+    .nav-links {
+        justify-content: center; /* Center nav items */
+        gap: 15px; /* Maintain gap */
+        width: 100%; /* Full width for nav links */
+    }
+
+    .auth-buttons {
+        justify-content: center; /* Center auth buttons */
+        width: 100%; /* Full width for auth buttons */
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-box {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .feature-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.founders {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.founders .logo img {
+    max-width: 150px; /* Adjust logo size */
+    margin-bottom: 20px;
+}
+
+.founders h2 {
+    font-size: 24px;
+    color: #003366; /* Text color */
+    margin-bottom: 10px;
+}
+
+.founders h3 {
+    font-size: 20px;
+    color: rgb(65, 161, 129);
+    margin-bottom: 10px;
+}
+
+.founders p {
+    font-size: 18px;
+    color: #555;
+}
+.container{
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+}
+.logo-founder{
+    display: flex;
+    justify-content: space-evenly;
+    height: 131px;
+}
+.founder-details{
+    display: flex;
+    justify-content: space-evenly;
+}
+.Investor-details{
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 99px
+
+}
+
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Modal Overlay */
+.signup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    z-index: 999; /* Ensure it’s above other content */
+}
+
+/* .signup-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+} */
+
+/* close the pop up of sign up and login */
+.Close-button{
+    border: none;
+    background: white;
+    padding-left: 319px;
+}
+
+/* Modal Content */
+.modal-content {
+    background: white;
+    border-radius: 20px; /* Oval shape */
+    padding: 20px; /* Padding inside the modal */
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Maximum width */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin: 5% auto; 
+    margin-top: 156px;
+}
+
+/* Modal Title */
+.modal-title {
+    text-align: center;
+    margin: 20px 0; /* Margin to give space above */
+}
+
+/* User Type Selection */
+.user-type-selection {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px; /* Slightly reduced bottom margin */
+}
+
+.user-type-btn {
+    padding: 8px 12px; /* Adjusted padding */
+    border: 1px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.user-type-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Signup Form Styles */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Name Container */
+.name-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Space below name fields */
+}
+
+.name-inputs input {
+    flex: 1; /* Equal space for both fields */
+    margin-right: 10px; /* Space between fields */
+    min-width: 0; /* Prevent overflow */
+}
+
+.name-inputs input:last-child {
+    margin-right: 0; /* No margin on the last input */
+}
+
+/* Input Fields */
+.signup-form input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 2px;
+}
+
+/* Signup Button */
+.signup-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Link Account Button */
+.link-account {
+    margin-top: 10px;
+    background: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* Go Back Button */
+.go-back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000; /* Ensure it’s above the modal */
+}
+
+.go-back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%; /* Full width on small screens */
+        padding: 15px; /* Adjust padding */
+        max-height: 90%; /* Restrict max height to avoid overflow */
+        overflow-y: auto; /* Enable scrolling if content is too tall */
+        margin: 5% auto; /* Center with margin for small screens */
+    }
+
+    .user-type-selection {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .user-type-btn {
+        margin-bottom: 10px; /* Space between buttons */
+        width: 100%; /* Full width for buttons */
+    }
+
+    .name-inputs {
+        flex-direction: column; /* Stack name inputs vertically on small screens */
+    }
+
+    .name-inputs input {
+        margin-right: 0; /* Remove right margin for stacking */
+        margin-bottom: 10px; /* Add space between stacked fields */
+    }
+}

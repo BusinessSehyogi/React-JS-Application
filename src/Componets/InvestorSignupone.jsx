@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from '../Images/logo-no-background.png';
 import { useNavigate } from "react-router-dom";
 import { globalVariable } from './globalVariables';
+import './Signup.css';
 
 const InvestorSignupone = () => {
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ const InvestorSignupone = () => {
 
         // You can uncomment and modify this fetch logic when needed
         /*
-        const url = `http://${globalVariable.value}/registerUser`;
+        const url = http://${globalVariable.value}/registerUser;
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -88,7 +89,7 @@ const InvestorSignupone = () => {
                         name='firstName'
                         placeholder='First Name'
                         value={formData.firstName}
-                        className='input-1-Investor'
+                        className='founder-signup-field'
                         onChange={handleChange}
                     />
                     <input
@@ -96,7 +97,7 @@ const InvestorSignupone = () => {
                         name='lastName'
                         placeholder='Last Name'
                         value={formData.lastName}
-                        className='input-2-Investor'
+                        className='founder-signup-field'
                         onChange={handleChange}
                     />
                     <input
@@ -104,7 +105,7 @@ const InvestorSignupone = () => {
                         name='phone'
                         placeholder='Phone no'
                         value={formData.phone}
-                        className='input-3-Investor'
+                        className='founder-signup-field'
                         onChange={handleChange}
                     />
                     <input
@@ -112,11 +113,11 @@ const InvestorSignupone = () => {
                         name='email'
                         placeholder='Email'
                         value={formData.email}
-                        className='input-4-Investor'
+                        className='founder-signup-field'
                         onChange={handleChange}
                     />
                     <div>
-                        <button className='sign-up-investor' onClick={handleClick}>Next</button>
+                        <button className='signup-investor-button' onClick={handleClick}>Next</button>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,462 @@
+/* General dashboard container */
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: #F4F6F9;
+    padding-top: 80px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #1B1F3B;
+    min-height: 100vh;
+    color: white;
+    padding: 20px;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: width 0.3s, opacity 0.3s;
+    top: 0;
+}
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Adjusting both sidebar and user-info */
+.sidebar,
+.user-info {
+    margin-top: -5px;
+    padding-top: 0;
+    min-height: 102vh;
+    overflow-y: auto;
+}
+
+/* If flexbox or grid is used, check their alignment */
+.container {
+    align-items: flex-start;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Ensure the overall layout container takes up the full height */
+.user-info {
+    background-color: #1B1F3B;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+
+/* Main content section */
+.main-content-founder-dashboard {
+    flex-grow: 1;
+    padding-top: 0;
+    margin-top: 0;
+    background-color: #F4F6F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Add button for "Create Post" */
+.create-post-button {
+    padding: 12px 24px;
+    background-color: #1B1F3B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px;
+    font-size: 16px;
+    height: 9vh;
+    width: 22vh
+}
+
+.create-post-button:hover {
+    background-color: #333;
+}
+
+/* Post section styling */
+.post-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Post card */
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+General dashboard container
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: #F4F6F9;
+    padding-top: 80px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #1B1F3B;
+    min-height: 100vh;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: width 0.3s, opacity 0.3s;
+    top: 0;
+    align-items: flex-start;
+}
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Adjusting both sidebar and user-info */
+.sidebar,
+.user-info {
+    margin-top: -10px;
+    padding-top: 0;
+    min-height: 102vh;
+    overflow-y: auto;
+}
+
+/* If flexbox or grid is used, check their alignment */
+.container {
+    align-items: flex-start;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Remove any margin or padding that could be causing extra space */
+/* body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #e0eafc, #cfdef3);
+    overflow-y: auto;
+} */
+
+/* Ensure the overall layout container takes up the full height */
+.user-info {
+    background-color: #1B1F3B;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+
+/* Style for the sidebar label when closed */
+.sidebar-label {
+    writing-mode: vertical-rl;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar.closed {
+    width: 4vw;
+    overflow: hidden;
+}
+
+/* Sidebar title */
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+/* Menu item styling */
+.menu-item {
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.menu-item:hover {
+    color: #99ffce;
+}
+
+/* Logout button */
+.logout-button {
+    margin-top: 40px;
+    background-color: #ffffff;
+    color: rgb(177, 57, 57);
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Style for the user info label when closed */
+.user-info-label {
+    writing-mode: vertical-rl;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    margin: 0;
+}
+
+.user-info.closed {
+    width: 0;
+    overflow: hidden;
+}
+
+/* Profile image */
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* User info title */
+.user-info h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* User info text */
+.user-info p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Main content section */
+.main-content-founder-dashboard {
+    flex-grow: 1; 
+    padding-top: 0;
+    margin-top: 0px;
+    background-color: #F4F6F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+/* Company logo styling */
+.dashboard-header {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #1B1F3B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search-button:hover {
+    background-color: #555;
+}
+
+.company-logo {
+    height: 50px;
+    max-width: 100%;
+}
+
+/* Vertical line styling */
+.vertical-line {
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    position: absolute;
+    left: 250px;
+    top: 80px;
+}
+
+/* Title above the post section */
+.business-ideas-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1B1F3B;
+    text-align: center;
+}
+
+/* Post section styling */
+.post-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Individual post card */
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Post image */
+.post-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Post stats (likes and comments) */
+.post-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Toggle button styling */
+.toggle-button {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    margin: 2px auto;
+    padding: 10px;
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar.closed .icon-container {
+    margin-top: 50px;
+}
+
+.sidebar.closed .toggle-button {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (mobile phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .post-card {
+        width: 100%;
+    }
+
+    .toggle-button {
+        font-size: 20px;
+        padding: 8px;
+    }
+}
+
+/* Medium devices (tablets, 576px to 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .post-card {
+        width: 250px;
+    }
+}
+
+/* Large devices (desktops, 768px and above) */
+@media (min-width: 768px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .post-card {
+        width: 300px;
+    }
+}
+
+.create-post-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E6EEF3;
+    padding: 25px;
+    margin-top: 2vw;
+    justify-self: center;
+}

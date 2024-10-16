@@ -1,0 +1,222 @@
+/* Container styling */
+.create-post-contain {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+    overflow-x: scroll;
+  }
+
+  .title-create-post,
+  .abstract-content-create-post,
+  .content-create-post{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .add-link-button{
+    border: none;
+    background-color: #F4F6F9;
+    font-size: 25px;
+    margin-left: 15px;
+  }
+  
+  /* Form styling */
+  .create-post-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* input[type="text"], */
+  .links-create-post {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+    outline: none;
+  }
+  
+  input[type="file"] {
+    border: none;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #007bff;
+  }
+  
+  /* Submit button styling */
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .create-post-form {
+      padding: 20px;
+    }
+  
+    .form-group label {
+      font-size: 14px;
+    }
+  
+    .submit-button {
+      font-size: 14px;
+    }
+  }
+  
+  .sideba {
+    background-color: #1B1F3B;
+    min-height: 100vh;
+    color: white;
+    padding: 17px;
+    width: 305px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: width 0.3s, opacity 0.3s;
+    top: 0;
+}
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Adjusting both sidebar and user-info */
+.sideba,
+.user-info {
+    margin-top: 61px;
+    padding-top: 8px;
+    min-height: 101vh;
+    /* overflow-y: auto; */
+    display: flex;
+    /* align-items: flex-end; */
+    position: fixed;
+    /* margin-right: 84vw; */
+}
+
+/* If flexbox or grid is used, check their alignment */
+.container {
+    align-items: flex-start;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Ensure the overall layout container takes up the full height */
+.user-info {
+    background-color: #1B1F3B;
+    color: white;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+.image-previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .image-preview {
+    width: 150px;  /* Adjust the width */
+    height: 150px;  /* Adjust the height */
+    object-fit: cover; /* Ensures the image covers the box while maintaining aspect ratio */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .main-content-create-post {
+    overflow-x: auto; /* Enable horizontal scrolling for main content */
+    white-space: nowrap; /* Prevent wrapping, allow horizontal overflow */
+    padding: 20px;
+  }
+
+  .input-title-create-post{
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .textarea-content-abstract-create-post,
+  .textarea-contect-create-post {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .create-post-contain {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-create-post {
+    min-width: 600px; /* Ensure form has a minimum width */
+  }
+  
+  /* textarea, input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+  } */
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  

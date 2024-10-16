@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
-import logo from '../Images/logo-no-background.png'
-import { useNavigate } from 'react-router-dom'
-import homepagepic from "../Images/businessperson-meeting-clip-art-transprent-png-team-work-11562903613sqceweh3yc.png"
+import React, {useEffect, useState} from 'react';
+import logo from '../Images/logo-no-background.png';
+import { useNavigate } from 'react-router-dom';
+import homepagepic from "../Images/businessperson-meeting-clip-art-transprent-png-team-work-11562903613sqceweh3yc.png";
 import { globalVariable } from './globalVariables';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,7 +24,7 @@ function InvestorSignuptwo() {
     async function handleClick(event){
         console.log(sessionStorage.getItem("UserType"))
         event.preventDefault()
-        let url = `http://${globalVariable.value}/registerInvestor`;
+        let url = `http//${globalVariable.value}/registerInvestor`;
        let response=await fetch(url,{
         method:'POST',
             headers:{

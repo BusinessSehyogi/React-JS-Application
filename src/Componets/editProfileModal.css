@@ -1,0 +1,90 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px; /* Increased width from 400px to 500px */
+    max-width: 90%;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Space between rows */
+}
+
+.form-field {
+    flex: 1; /* Equal space for all fields */
+    margin-right: 10px; /* Space between fields */
+}
+
+.form-field:last-child {
+    margin-right: 0; /* Remove margin for the last field */
+}
+
+.label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: 100%; /* Full width for inputs */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.otp-button {
+    margin-top: 10px; /* Add margin to OTP button */
+}
+
+.file-message {
+    display: block; /* Ensure it takes a new line */
+    margin-top: 5px; /* Add some spacing above the message */
+    font-size: 12px;
+    color: #888; /* Gray color for the message */
+}
+
+.profile-pic-preview {
+    margin-top: 10px; /* Add margin for the profile preview */
+    width: 50px; /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    border-radius: 50%; /* Make it circular */
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Add margin at the top for buttons */
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc; /* Disable button color */
+    cursor: not-allowed; /* Not allowed cursor */
+}

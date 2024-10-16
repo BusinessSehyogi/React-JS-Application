@@ -7,6 +7,10 @@ import Login from './Componets/Login';
 import Signup from './Componets/Signup';
 import InvestorSignupone from './Componets/InvestorSignupone';
 import InvestorSignuptwo from './Componets/InvestorSignuptwo';
+import FounderDashboard from './Componets/FounderDashboard';
+import CreatePost from './Componets/CreatePost';
+// import FounderHomepage from './Componets/FounderHomepage';
+import EditProfileModal from "./Componets/EditProfileModal";
 
 
 
@@ -21,6 +25,10 @@ function App() {
       <Route exact path='/signup' element={<Signup/>}/>
       <Route exact path='/InvestorSignupone' element={<InvestorSignupone/>}/>
       <Route exact path='/InvestorSignuptwo' element={<InvestorSignuptwo/>}/>
+      <Route exact path='/CreatePost' element={<CreatePost/>}/>
+      {/* <Route exact path='/FounderHomepage' element={<FounderHomepage/>}/> */}
+      <Route exact path='/EditProfileModal' element={<EditProfileModal/>}/>
+      <Route exact path='/FounderDashboard' element={<FounderDashboard/>}/>
         </Routes>
         </BrowserRouter>
       
