@@ -170,6 +170,7 @@ body.modal-open {
     border: none;
     padding-left: 126px;
     margin-top: -1px;
-    margin-left: 166px;
+    margin-left: 250px;
     background-color: #fff;
+    color: black;
 }

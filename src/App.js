@@ -9,8 +9,10 @@ import InvestorSignupone from './Componets/InvestorSignupone';
 import InvestorSignuptwo from './Componets/InvestorSignuptwo';
 import FounderDashboard from './Componets/FounderDashboard';
 import CreatePost from './Componets/CreatePost';
+import ProfileUpdate from "./Componets/ProfileUpdate"
 // import FounderHomepage from './Componets/FounderHomepage';
 import EditProfileModal from "./Componets/EditProfileModal";
+
 
 
 
@@ -29,6 +31,8 @@ function App() {
       {/* <Route exact path='/FounderHomepage' element={<FounderHomepage/>}/> */}
       <Route exact path='/EditProfileModal' element={<EditProfileModal/>}/>
       <Route exact path='/FounderDashboard' element={<FounderDashboard/>}/>
+      <Route exact path='/ProfileUpdate' element={<ProfileUpdate/>}/>
+
         </Routes>
         </BrowserRouter>
       

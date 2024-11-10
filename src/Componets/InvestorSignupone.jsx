@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from '../Images/logo-no-background.png';
 import { useNavigate } from "react-router-dom";
 import { globalVariable } from './globalVariables';
-import './Signup.css';
+import './signup.css';
 
 const InvestorSignupone = () => {
     const navigate = useNavigate();

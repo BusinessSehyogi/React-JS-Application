@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Login.css";
+import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { globalVariable } from "./globalVariables";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
@@ -36,28 +36,13 @@ function Login({ closeModal }) {
   const handleClick = async (event) => {
     event.preventDefault();
     try {
-      let url = `http://${globalVariable.value}/getCurrentDateTime`;
-      let response = await fetch(url);
-      let date = await response.json();
+      // let url = `http:${globalVariable.value}/getCurrentDateTime`;
+      // let response = await fetch(url);
+      // let date = await response.json();
 
-      url = `http://${globalVariable.value}/registerUser`;
-      response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: 0,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          password: formData.password,
-          category: UserType,
-          visible: true,
-          emailVerified: false,
-          contactnoVerified: false,
-          dateTimeOfRegistration: date,
-        }),
+      let url = `http://${globalVariable.value}/login/${formData.email}`;
+      let response = await fetch(url, {
+        method: "GET",
       });
 
       let data = await response.json();
