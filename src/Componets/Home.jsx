@@ -3,7 +3,7 @@ import logo from "../Images/logo-no-background name.png";
 import { useNavigate } from "react-router-dom";
 import homepagepic from "../Images/businessperson-meeting-clip-art-transprent-png-team-work-11562903613sqceweh3yc.png";
 import Signup from "./Signup"; // Import the Signup component
-import "./home.css";
+import "./Home.css";
 import Login from "./Login";
 import Boat from "../Images/Boat_Logo.webp.png";
 import cars24 from "../Images/cars24.png";

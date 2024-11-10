@@ -5,7 +5,6 @@ import logo from "../Images/logo-no-background name.png";
 import { globalVariable } from "./globalVariables";
 import { FaBars, FaHome, FaLightbulb, FaEnvelope, FaBell, FaUser } from 'react-icons/fa'; 
 import EditProfileModal from './EditProfileModal'; 
-import ProfileUpdate from './ProfileUpdate';
 
 const FounderDashboard = () => {
   const navigate = useNavigate();
@@ -103,7 +102,7 @@ const FounderDashboard = () => {
             <div className="menu-item" onClick={() => navigate('/notifications')}>
               <FaBell /> <span>Notifications</span>
             </div>
-            <div className="menu-item" onClick={() => navigate('/ProfileUpdate')}>
+            <div className="menu-item" onClick={handleProfileClick}>
               <FaUser /> <span>Profile</span>
             </div>
             <button className="logout-button" onClick={handleLogout}>
@@ -123,7 +122,7 @@ const FounderDashboard = () => {
         )}
       </div>
 
-      {/* {userInfoOpen && (
+      {userInfoOpen && (
         <div className={`user-info ${userInfoOpen ? 'open' : ''}`}>
           <img className="profile-image" src={founderData.profilePic} alt="User" />
           <h2>{founderData.name}</h2>
@@ -132,7 +131,7 @@ const FounderDashboard = () => {
           <button onClick={handleEditProfileClick}>Edit button</button>
         </div>
       )}
-      {userInfoOpen && <div className="vertical-line"></div>} */}
+      {userInfoOpen && <div className="vertical-line"></div>}
 
       <div className="main-content-founder-dashboard">
         <header className="dashboard-header">
@@ -192,7 +191,7 @@ const FounderDashboard = () => {
           )}
         </div>
       </div>
-      {/* {editProfileOpen && <EditProfileModal closeModal={handleCloseEditProfile} founderData={founderData} />} */}
+      {editProfileOpen && <EditProfileModal closeModal={handleCloseEditProfile} founderData={founderData} />}
     </div>
   );
 };
