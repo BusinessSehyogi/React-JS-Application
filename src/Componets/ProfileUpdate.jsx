@@ -13,6 +13,9 @@ import {
 } from "react-icons/fa";
 import EditProfileModal from "./EditProfileModal";
 import "./profileupdate.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProfileUpdate = () => {
   const navigate = useNavigate();
@@ -149,6 +152,8 @@ const ProfileUpdate = () => {
       return newValue;
     });
   };
+
+  const notify = () => toast("Your profile has been updated");
 
   return (
     <div className="dashboard-container">
@@ -301,7 +306,8 @@ const ProfileUpdate = () => {
           </select>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={notify}>Submit</button>
+        <ToastContainer />
       </form>
     </div>
   );
