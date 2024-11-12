@@ -36,9 +36,6 @@ function Login({ closeModal }) {
   const handleClick = async (event) => {
     event.preventDefault();
     try {
-      // let url = `http://${globalVariable.value}/getCurrentDateTime`;
-      // let response = await fetch(url);
-      // let date = await response.json();
 
       let url = `http://${globalVariable.value}/login/${formData.email}`;
       let response = await fetch(url, {
