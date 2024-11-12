@@ -4,13 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/componets/globalVariables.jsx
 
 # testing
 /coverage
 
 # production
 /build
+/src/componets/globalVariables.jsx
 
 # misc
 .DS_Store
