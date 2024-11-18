@@ -28,6 +28,16 @@ const CreatePost = ({ addNewPost }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [founderData, setFounderData] = useState({ businessIdeas: [] });
 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    contactNo: "",
+    gender: "",
+    dateOfBirth: "",
+    photo: ""
+  });
+
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     const maxImages = 3;
@@ -91,6 +101,9 @@ const CreatePost = ({ addNewPost }) => {
           areaId: 1,
         }),
       });
+      images.forEach((image, index) => {
+        formData.append(`image_${index}`, image);
+      })
 
       let responseText = await response.json();
 

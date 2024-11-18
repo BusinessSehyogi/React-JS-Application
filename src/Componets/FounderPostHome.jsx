@@ -10,22 +10,19 @@ import {
   FaEnvelope,
   FaBell,
   FaUser,
-<<<<<<< Updated upstream
-=======
   FaPlus,
   FaCheckCircle,
 
->>>>>>> Stashed changes
 } from "react-icons/fa";
+import Header from "./Header";
 import EditProfileModal from "./EditProfileModal";
 import "./profileupdate.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-<<<<<<< Updated upstream
-
-=======
 import { initializeApp } from "firebase/app";
 import * as storageFunctions from "firebase/storage";
+import PostCard from "./PostCard";
+import "./FounderPostHome.css"
 
 
 
@@ -40,9 +37,8 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const storage = storageFunctions.getStorage(app);
->>>>>>> Stashed changes
 
-const ProfileUpdate = () => {
+const FounderPostHome = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [userInfoOpen, setUserInfoOpen] = useState(false);
@@ -115,53 +111,6 @@ const ProfileUpdate = () => {
     }
   };
 
-  let userId = Number(sessionStorage.getItem("Token"));
-  let email = sessionStorage.getItem("Email");
-  let data;
-
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    contactNo: "",
-    gender: "",
-  });
-
-  const handleSubmit = async (event) => {
-    console.log(formData.gender);
-
-    event.preventDefault();
-    try {
-      let url = `http://${globalVariable.value}/updateUser/${userId}`;
-      let response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: 0,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          password: formData.password,
-          gender: formData.gender,
-          contactNo: formData.contactNo,
-          category: "Investor",
-          photo: null,
-          visible: false,
-          emailVerified: false,
-          contactNoVerified: false,
-          dateTimeOfRegistration: null,
-          dateOfBirth: null,
-        }),
-      });
-
-      let data = await response.json();
-    } catch (error) {
-      console.error("Error registering user:", error);
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -203,8 +152,6 @@ const ProfileUpdate = () => {
     fetchData();
   }, []);
 
-<<<<<<< Updated upstream
-=======
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -249,15 +196,12 @@ const ProfileUpdate = () => {
 
 
 
->>>>>>> Stashed changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
-<<<<<<< Updated upstream
-=======
   };
 
   const handleImageChange = async (e) => {
@@ -297,7 +241,6 @@ const ProfileUpdate = () => {
       console.error("Error uploading image to Firebase:", error);
       toast.error("Failed to upload image");
     }
->>>>>>> Stashed changes
   };
 
   const handleSearch = (event) => {
@@ -438,11 +381,13 @@ const ProfileUpdate = () => {
     setOtpVerificationPhone(false);
   };
 
-  const notify = () => toast("Your profile has been updated");
+  const ClickChange =() =>{
+    navigate("/CreatePost")
+  }
 
   return (
     <div className="dashboard-container">
-      <div className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
+      {/* <div className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
         <div className="toggle-button" onClick={toggleSidebar}>
           <FaBars />
         </div>
@@ -450,11 +395,7 @@ const ProfileUpdate = () => {
           <>
             <div
               className="menu-item"
-<<<<<<< Updated upstream
-              onClick={() => navigate("/FounderHomepage")}
-=======
               onClick={() => navigate("/FounderPostHome")}
->>>>>>> Stashed changes
             >
               <FaHome /> <span>Home</span>
             </div>
@@ -485,7 +426,7 @@ const ProfileUpdate = () => {
             <div className="icon-container">
               <div
                 className="menu-item"
-                onClick={() => navigate("/FounderHomepage")}
+                onClick={() => navigate("/FounderPostHome")}
               >
                 <FaHome />
               </div>
@@ -510,7 +451,7 @@ const ProfileUpdate = () => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* {userInfoOpen && (
         <div className={`user-info ${userInfoOpen ? 'open' : ''}`}>
@@ -525,15 +466,12 @@ const ProfileUpdate = () => {
 
       {/* {editProfileOpen && <EditProfileModal closeModal={handleCloseEditProfile} founderData={founderData} />} */}
 
-      <header className="dashboard-header">
+      {/* <header className="dashboard-header">
         <img src={logo} alt="Company Logo" className="company-logo" />
         <form className="search-form" onSubmit={handleSearch}>
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
           <input
             type="text"
             placeholder="Search for Investor or Co-Founder"
@@ -545,230 +483,28 @@ const ProfileUpdate = () => {
             Search
           </button>
         </form>
-      </header>
+      </header> */}
+        <Header/>
+        {/* ---------------------------------------------------Post card------------------------------------------------------------------------------ */}
+       
+       <div className="Create-Post-home">
+        <button onClick={ClickChange}>Create New Post</button>
 
-      <form class="profile-form" onSubmit={handleSubmit}>
-<<<<<<< Updated upstream
-        <div className="profile-name">
-          <div class="profile-field first-name">
-            <label for="firstName">First Name</label>
-            <input
-              id="firstName"
-              name="firstName"
-              onChange={handleChange}
-              type="text"
-              placeholder="Enter please"
-            />
-=======
-
-        {/* ---------------------------------------------------Profile part------------------------------------------------------------------------------ */}
-
-        <div
-          className="profile-image-section"
-          onClick={() => document.getElementById("imageInput").click()}
-        >
-          {imagePreview ? (
-            <img
-              src={imagePreview}
-              alt="Profile Preview"
-              className="profile-image-preview"
-              value={formData.imageName}
-
-
-            />
-          ) : (
-            <div className="default-image">
-              <FaPlus className="plus-icon" />
-            </div>
-          )}
-          <div className="overlay">
-            <FaPlus />
-          </div>
-          <input
-            id="imageInput"
-            type="file"
-            onChange={handleImageChange}
-            accept="image/*"
-            disabled={!isEditable}
-
-          />
-        </div>
-
-        <div className="profile-name">
-          <div class="profile-field first-name">
-            <label for="firstName">First Name</label>
-            <input
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              type="text"
-              placeholder="Enter please"
-              disabled={!isEditable}
-            />
->>>>>>> Stashed changes
-          </div>
-          <div class="profile-field last-name">
-            <label for="lastName">Last Name</label>
-            <input
-              id="lastName"
-              type="text"
-<<<<<<< Updated upstream
-              placeholder="Enter please"
-              name="lastName"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div class="profile-field phone">
-          <label for="phone">Phone Number</label>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="Enter your phone number"
-            name="contactNo"
-            onChange={handleChange}
-          />
-        </div>
-        {/* <div class="profile-field dob">
-          <label for="dob">Date of Birth</label>
-          <input id="dob" type="date" />
-        </div> */}
-        <div className="profile-field gender">
-          <label htmlFor="gender">Gender</label>
-          <select
-            id="gender"
-            name="gender" // Add name attribute
-            value={formData.gender} // Bind the value to formData.gender
-            onChange={handleChange} // Add the onChange event handler
-          >
-            <option value="" disabled>
-              Select your gender
-            </option>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="O">Other</option>
-          </select>
-        </div>
-
-        <button type="submit" onClick={notify}>Submit</button>
-=======
-              value={formData.lastName}
-              placeholder="Enter please"
-              name="lastName"
-              onChange={handleChange}
-              disabled={!isEditable}
-            />
-          </div>
-        </div>
-
-        
-        <div className="profile-field email">
-  <label htmlFor="email">Email</label>
-  <div className="input-with-icon">
-    <input
-      id="email"
-      name="email"
-      value={formData.email}
-      onChange={handleChange}
-      disabled={!isEditable} // Disable input until the edit button is pressed
-    />
-    {/* Display verified icon if email is verified */}
-    {otpVerificationEmail && <FaCheckCircle className="verified-icon" />}
-  </div>
-
-  {/* Display a message if OTP is not verified */}
-  {!otpVerificationEmail && (
-    <p className="error-message">
-      Your email is not verified. Please verify to continue.
-    </p>
-  )}
-
-  {/* OTP input and verification buttons (shown only after pressing edit) */}
-  {isEditable && !otpVerificationEmail && (
-    <>
-      <button type="button" onClick={() => requestMailOtp("email")}>
-        Get OTP
-      </button>
-      <input
-        type="text"
-        placeholder="Enter OTP"
-        value={otpForEmail}
-        onChange={(e) => setOtpForEmail(e.target.value)}
-      />
-      <button type="button" onClick={() => verifyOtp("email", otpForEmail)}>
-        Verify Email
-      </button>
-    </>
-  )}
+       </div>
+       
+       <div>
+       <div className="post-cards-container">
+  {founderData.businessIdeas.map((post, index) => (
+    <PostCard key={index} post={post} />
+  ))}
 </div>
 
-
-        {/* <div className="profile-field phone">
-          <label htmlFor="contactNo">Phone Number</label>
-          <input
-            id="contactNo"
-            name="contactNo"
-            value={formData.contactNo}
-            onChange={handleChange}
-            disabled={!isEditable}
-            onFocus={() => isEditable && requestSMSOtp("phone")}
-          />
-          {isEditable && otpVerificationPhone === false && (
-            <>
-              <button type="button" onClick={() => requestSMSOtp("phone")}>
-                Get OTP
-              </button>
-              <input
-                type="text"
-                placeholder="Enter OTP"
-                value={otpForPhone}
-                onChange={(e) => setOtpForPhone(e.target.value)}
-              />
-              <button type="button" onClick={() => verifyOtp("phone", otpForPhone)}>
-                Verify Phone
-              </button>
-            </>
-          )}
-        </div> */}
-        <div className="profile-field dob">
-          <label htmlFor="dob">Date of Birth</label>
-          <input
-            id="dob"
-            type="date"
-            value={formData.dateOfBirth}
-            onChange={handleInputChange}
-            disabled={!isEditable}
-          />
-        </div>
-        <div className="profile-field gender">
-          <label htmlFor="gender">Gender</label>
-          <select
-            id="gender"
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            disabled={!isEditable}
-
-          >
-            <option value="" disabled>
-              Select your gender
-            </option>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="O">Other</option>
-          </select>
-        </div>
-
-        <button type="button" onClick={toggleEditModed}>
-          {isEditable ? "Cancel Edit" : "Edit Profile"}
-        </button>
-        {isEditable && <button type="submit">Submit</button>}
->>>>>>> Stashed changes
-        <ToastContainer />
-      </form>
+       </div>
+       
+       
+      
     </div>
   );
 };
 
-export default ProfileUpdate;
+export default FounderPostHome;

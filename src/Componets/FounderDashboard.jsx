@@ -5,8 +5,12 @@ import logo from "../Images/logo-no-background name.png";
 import { globalVariable } from "./globalVariables";
 import { FaBars, FaHome, FaLightbulb, FaEnvelope, FaBell, FaUser } from 'react-icons/fa'; 
 import EditProfileModal from './EditProfileModal'; 
+<<<<<<< Updated upstream
 import ProfileUpdate from './ProfileUpdate';
 
+=======
+import Header from './Header';
+>>>>>>> Stashed changes
 const FounderDashboard = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -66,7 +70,8 @@ const FounderDashboard = () => {
   }, [navigate]);
 
   const handleProfileClick = () => {
-    setUserInfoOpen(!userInfoOpen);
+    // setUserInfoOpen(!userInfoOpen);
+    navigate("/ProfileUpdate")
   };
 
   const closeModal = () => {
@@ -85,13 +90,13 @@ const FounderDashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+      {/* <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="toggle-button" onClick={toggleSidebar}>
           <FaBars />
         </div>
         {sidebarOpen ? (
           <>
-            <div className="menu-item" onClick={() => navigate('/FounderHomepage')}>
+            <div className="menu-item" onClick={() => navigate('/FounderPostHome')}>
               <FaHome /> <span>Home</span>
             </div>
             <div className="menu-item" onClick={() => navigate('/FounderDashboard')}>
@@ -121,7 +126,7 @@ const FounderDashboard = () => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* {userInfoOpen && (
         <div className={`user-info ${userInfoOpen ? 'open' : ''}`}>
@@ -134,8 +139,7 @@ const FounderDashboard = () => {
       )}
       {userInfoOpen && <div className="vertical-line"></div>} */}
 
-      <div className="main-content-founder-dashboard">
-        <header className="dashboard-header">
+{/* <header className="dashboard-header">
           <img src={logo} alt="Company Logo" className="company-logo" />
           <form className="search-form" onSubmit={handleSearch}>
             <input
@@ -149,7 +153,12 @@ const FounderDashboard = () => {
               Search
             </button>
           </form>
-        </header>
+        </header> */}
+
+        <Header/>
+
+      <div className="main-content-founder-dashboard">
+        
 
         <div className="create-post-container">
           <button className="create-post-button" onClick={handleCreatePostClick}>

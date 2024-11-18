@@ -173,3 +173,29 @@ body.modal-open {
     margin-left: 166px;
     background-color: #fff;
 }
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container input {
+    flex: 1;
+    padding-right: 2.5rem; /* Space for the eye icon */
+  }
+  
+  .toggle-password-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .toggle-password-btn:focus {
+    outline: none;
+  }
+  
