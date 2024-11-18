@@ -5,12 +5,7 @@ import logo from "../Images/logo-no-background name.png";
 import { globalVariable } from "./globalVariables";
 import { FaBars, FaHome, FaLightbulb, FaEnvelope, FaBell, FaUser } from 'react-icons/fa'; 
 import EditProfileModal from './EditProfileModal'; 
-<<<<<<< Updated upstream
-import ProfileUpdate from './ProfileUpdate';
-
-=======
 import Header from './Header';
->>>>>>> Stashed changes
 const FounderDashboard = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(true);
