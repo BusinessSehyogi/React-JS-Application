@@ -25,6 +25,7 @@ const FounderDashboard = () => {
         }
         const data = await response.json();
         setFounderData({ businessIdeas: data }); // Store the fetched data
+        console.log(data,"--Dashboard data")
       } catch (error) {
         console.error('Error fetching founder data:', error);
       }

@@ -12,6 +12,7 @@ import {
   FaUser,
 } from "react-icons/fa";
 import logo from "../Images/logo-no-background name.png";
+import Header from "./Header";
 // import Navbar from './Navbar';
 
 const CreatePost = ({ addNewPost }) => {
@@ -28,15 +29,15 @@ const CreatePost = ({ addNewPost }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [founderData, setFounderData] = useState({ businessIdeas: [] });
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState([{
     firstName: "",
     lastName: "",
     email: "",
     contactNo: "",
     gender: "",
     dateOfBirth: "",
-    photo: ""
-  });
+    photo: "",
+  }]);
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
@@ -48,12 +49,13 @@ const CreatePost = ({ addNewPost }) => {
     }
 
     setImages(files);
-    setImages(files);
+  
 
     // Generate image preview URLs
     const previewUrls = files.map((file) => URL.createObjectURL(file));
     setImagePreviews(previewUrls);
   };
+  console.log(images,"Imagesafter upload")
 
   // let url = `http://${globalVariable.value}/getArea`;
   // let response = fetch(url, {
@@ -101,10 +103,17 @@ const CreatePost = ({ addNewPost }) => {
           areaId: 1,
         }),
       });
-      images.forEach((image, index) => {
-        formData.append(`image_${index}`, image);
-      })
-
+      console.log(images, "Images in submit")
+      let postimage=[]
+      images.forEach((image, index) => (
+         postimage= {image:`image_${index}`}
+        
+      ))
+      console.log("Postimage--",postimage)
+      setFormData({
+        photo:postimage
+       })
+        console.log(formData,"formData")
       let responseText = await response.json();
 
       console.log(responseText.postId);
@@ -262,7 +271,7 @@ const CreatePost = ({ addNewPost }) => {
       </div>
 
       {/* User Info Section */}
-      {userInfoOpen && (
+      {/* {userInfoOpen && (
         <div className={`user-info ${userInfoOpen ? "open" : ""}`}>
           <img
             className="profile-image"
@@ -274,10 +283,10 @@ const CreatePost = ({ addNewPost }) => {
           <p>Following: {founderData.following}</p>
           <button>Edit button</button>
         </div>
-      )}
+      )} */}
 
       {/* Vertical line between sidebar and user info */}
-      {userInfoOpen && <div className="vertical-line"></div>}
+      
 
       {/* Main Content Section */}
       <div className="main-content-founder-dashboard">
@@ -298,6 +307,7 @@ const CreatePost = ({ addNewPost }) => {
             </button>
           </form>
         </header>
+        {/* <Header/> */}
 
         <h2>Create New Post</h2>
         <form onSubmit={handleSubmit}>
@@ -364,12 +374,13 @@ const CreatePost = ({ addNewPost }) => {
               </button>
             </div>
           ))}
-          <button type="submit" className="submit-button">
+          <button type="submit" onClick={handleSubmit} className="submit-button">
             Submit
           </button>
         </form>
       </div>
-    </div>
+      </div>
+    
   );
 };
 

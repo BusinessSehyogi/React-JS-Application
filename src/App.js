@@ -33,6 +33,12 @@ function App() {
       <Route exact path='/EditProfileModal' element={<EditProfileModal/>}/>
       <Route exact path='/FounderDashboard' element={<FounderDashboard/>}/>
       <Route exact path='/ProfileUpdate' element={<ProfileUpdate/>}/>
+<<<<<<< Updated upstream
+=======
+      <Route exact path='/FounderPostHome' element={<FounderPostHome/>}/>
+      
+      
+>>>>>>> Stashed changes
         </Routes>
         </BrowserRouter>
       

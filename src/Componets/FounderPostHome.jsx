@@ -69,6 +69,7 @@ const FounderPostHome = () => {
   const [otpForPhone, setOtpForPhone] = useState("");
   const [otpVerificationEmail, setOtpVerificationEmail] = useState(false);
   const [otpVerificationPhone, setOtpVerificationPhone] = useState(false)
+  const[likes,setlikes]= useState()
 
 
 
@@ -114,7 +115,7 @@ const FounderPostHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = `http://${globalVariable.value}/getPostsForFounder/${userId}`;
+        let url = `http://${globalVariable.value}/getPostForHomePage/${userId}`;
         let response = await fetch(url, {
           method: "GET",
           headers: {
@@ -125,7 +126,9 @@ const FounderPostHome = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        
         setFounderData({ businessIdeas: data }); // Store the fetched data
+        // console.log(data,"Data")
 
       } catch (error) {
         console.error("Error fetching founder data:", error);
@@ -143,7 +146,7 @@ const FounderPostHome = () => {
           throw new Error("Network response was not ok");
         }
         data = await response.json();
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error("Error fetching founder data:", error);
       }
@@ -375,6 +378,27 @@ const FounderPostHome = () => {
 
   };
 
+  // const getLikes = async (id) => {
+   
+  //   let postId = founderData.filter((item)=>item.postId ==id)
+  //   console.log(postId,"PostId")
+  //   const url = `http://${globalVariable.value}/getLikes/${postId}`;
+  //   const response = await fetch(url, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" }
+  //   });
+  //   let data = await response.json();
+  //   console.log(data);
+
+  //   if (response.ok) {
+      
+  //   }
+  // };
+ 
+ 
+   
+
+  
   const toggleEditModed = () => {
     setIsEditable((prev) => !prev);
     setOtpVerificationEmail(false);
@@ -386,6 +410,7 @@ const FounderPostHome = () => {
   }
 
   return (
+    
     <div className="dashboard-container">
       {/* <div className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
         <div className="toggle-button" onClick={toggleSidebar}>
@@ -486,16 +511,21 @@ const FounderPostHome = () => {
       </header> */}
         <Header/>
         {/* ---------------------------------------------------Post card------------------------------------------------------------------------------ */}
+        {/* <div className="Create-Post-home">
+        <button onClick={ClickChange}>Create New Post</button>
+
+       </div> */}
        
-       <div className="Create-Post-home">
+       
+       <div className="row Founder-Post-create">
+        <div className="Create-Post-home">
         <button onClick={ClickChange}>Create New Post</button>
 
        </div>
-       
-       <div>
+
        <div className="post-cards-container">
   {founderData.businessIdeas.map((post, index) => (
-    <PostCard key={index} post={post} />
+    <PostCard key={index} post={post} userId={userId} />
   ))}
 </div>
 
