@@ -11,8 +11,11 @@ import {
     FaUser,
     FaPlus,
     FaCheckCircle,
+    FaCompass,
   
   } from "react-icons/fa";
+
+  import "./Header.css"
 
 function Header() {
 
@@ -84,6 +87,9 @@ function Header() {
             <div className="menu-item" onClick={() => navigate("/messages")}>
               <FaEnvelope /> <span>Messages</span>
             </div>
+            <div className="menu-item" onClick={() => navigate("/Explore")}>
+              <FaCompass /> <span>Explore</span>
+            </div>
             <div
               className="menu-item"
               onClick={() => navigate("/notifications")}
@@ -114,6 +120,9 @@ function Header() {
               </div>
               <div className="menu-item" onClick={() => navigate("/messages")}>
                 <FaEnvelope />
+              </div>
+              <div className="menu-item" onClick={() => navigate("/Explore")}>
+                <FaCompass />
               </div>
               <div
                 className="menu-item"

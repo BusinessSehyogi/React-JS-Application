@@ -1,0 +1,49 @@
+.sidebar {
+    position: fixed; /* Fixes the sidebar in place */
+    top: 72px;         /* Aligns the sidebar to the top of the viewport */
+    left: 0;        /* Aligns the sidebar to the left of the viewport */
+    height: 100vh;  /* Makes the sidebar occupy the full viewport height */
+    width: 250px;   /* Adjust width as needed */
+    background-color: #1B1F3B; /* Sidebar background color */
+    color: white;
+    overflow-y: auto; /* Allows scrolling within the sidebar if content exceeds viewport height */
+    transition: width 0.3s ease; /* Smooth transition for expand/collapse */
+  }
+  
+  .sidebar.closed {
+    width: 50px; /* Width when the sidebar is collapsed */
+  }
+  
+  .sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .menu-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    background-color: #34495e; /* Highlight on hover */
+  }
+  
+  .logout-button {
+    margin: -2px;
+    padding: 12px;
+    background-color: #e74c3c; /* Logout button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #c0392b; /* Hover effect for logout button */
+  }
+  

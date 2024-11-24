@@ -10,19 +10,14 @@ import {
   FaEnvelope,
   FaBell,
   FaUser,
-<<<<<<< Updated upstream
-=======
   FaPlus,
   FaCheckCircle,
 
->>>>>>> Stashed changes
 } from "react-icons/fa";
 import EditProfileModal from "./EditProfileModal";
 import "./profileupdate.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-<<<<<<< Updated upstream
-=======
 import { initializeApp } from "firebase/app";
 import * as storageFunctions from "firebase/storage";
 
@@ -39,7 +34,6 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const storage = storageFunctions.getStorage(app);
->>>>>>> Stashed changes
 
 const ProfileUpdate = () => {
   const navigate = useNavigate();
@@ -54,21 +48,21 @@ const ProfileUpdate = () => {
   const [followersCount, setFollowersCount] = useState(0);
 
 
-  // let userId = Number(sessionStorage.getItem("Token"));
-  // let email = sessionStorage.getItem("Email");
-  // let data;
+  let userId = Number(sessionStorage.getItem("Token"));
+  let email = sessionStorage.getItem("Email");
+  let data;
 
 
 
-  // const [formData, setFormData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   contactNo: "",
-  //   gender: "",
-  //   dateOfBirth: "",
-  //   photo: ""
-  // });
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    contactNo: "",
+    gender: "",
+    dateOfBirth: "",
+    photo: ""
+  });
 
   const [otpForEmail, setOtpForEmail] = useState("");
   const [otpForPhone, setOtpForPhone] = useState("");
@@ -77,44 +71,44 @@ const ProfileUpdate = () => {
 
 
 
-  // const handleSubmit = async (event) => {
-  //   console.log(formData.gender);
+  const handleSubmit = async (event) => {
+    console.log(formData.gender);
 
-  //   event.preventDefault();
-  //   try {
-  //     let url = `http://${globalVariable.value}/updateUser/${userId}`;
-  //     let response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         userId: 0,
-  //         firstName: formData.firstName,
-  //         lastName: formData.lastName,
-  //         email: formData.email,
-  //         password: formData.password,
-  //         gender: formData.gender,
-  //         contactNo: formData.contactNo,
-  //         category: "Investor",
-  //         photo: null,
-  //         visible: false,
-  //         emailVerified: false,
-  //         contactNoVerified: false,
-  //         dateTimeOfRegistration: null,
-  //         dateOfBirth: null,
-  //       }),
-  //     });
+    event.preventDefault();
+    try {
+      let url = `http://${globalVariable.value}/updateUser/${userId}`;
+      let response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: 0,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: "",
+          gender: formData.gender,
+          contactNo: formData.contactNo,
+          category: "Founder",
+          photo: "",
+          visible: "",
+          emailVerified: "",
+          contactNoVerified: "",
+          dateTimeOfRegistration: "",
+          dateOfBirth: "",
+        }),
+      });
 
-  //     if (response.ok) {
-  //       toast("Your profile has been updated");
-  //       setIsEditable(false); // Exit edit mode after submitting
+      if (response.ok) {
+        toast("Your profile has been updated");
+        setIsEditable(false); // Exit edit mode after submitting
 
-  //     }
-  //   } catch (error) {
-  //     console.error("Error registering user:", error);
-  //   }
-  // };
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
+  };
 
   // let userId = Number(sessionStorage.getItem("Token"));
   // let email = sessionStorage.getItem("Email");
@@ -204,8 +198,6 @@ const ProfileUpdate = () => {
     fetchData();
   }, []);
 
-<<<<<<< Updated upstream
-=======
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -276,15 +268,12 @@ const ProfileUpdate = () => {
 
 
 
->>>>>>> Stashed changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
-<<<<<<< Updated upstream
-=======
   };
 
   const handleImageChange = async (e) => {
@@ -324,7 +313,6 @@ const ProfileUpdate = () => {
       console.error("Error uploading image to Firebase:", error);
       toast.error("Failed to upload image");
     }
->>>>>>> Stashed changes
   };
 
   const handleSearch = (event) => {
@@ -369,7 +357,7 @@ const ProfileUpdate = () => {
     sessionStorage.setItem("userProfile", JSON.stringify(updatedProfile));
   };
 
-  // const notify = () => toast("Your profile has been updated");
+  const notify = () => toast("Your profile has been updated");
 
   const toggleEditMode = () => {
     setIsEditable((prev) => !prev); // Toggle edit mode
@@ -477,11 +465,7 @@ const ProfileUpdate = () => {
           <>
             <div
               className="menu-item"
-<<<<<<< Updated upstream
-              onClick={() => navigate("/FounderHomepage")}
-=======
               onClick={() => navigate("/FounderPostHome")}
->>>>>>> Stashed changes
             >
               <FaHome /> <span>Home</span>
             </div>
@@ -555,12 +539,9 @@ const ProfileUpdate = () => {
       <header className="dashboard-header">
         <img src={logo} alt="Company Logo" className="company-logo" />
         <form className="search-form" onSubmit={handleSearch}>
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
           <input
             type="text"
             placeholder="Search for Investor or Co-Founder"
@@ -582,8 +563,6 @@ const ProfileUpdate = () => {
   </div>
 
       <form class="profile-form" onSubmit={handleSubmit}>
-<<<<<<< Updated upstream
-=======
 
         {/* ---------------------------------------------------Profile part------------------------------------------------------------------------------ */}
 
@@ -618,24 +597,17 @@ const ProfileUpdate = () => {
           />
         </div>
 
->>>>>>> Stashed changes
         <div className="profile-name">
           <div class="profile-field first-name">
             <label for="firstName">First Name</label>
             <input
               id="firstName"
               name="firstName"
-<<<<<<< Updated upstream
-              onChange={handleChange}
-              type="text"
-              placeholder="Enter please"
-=======
               value={formData.firstName}
               onChange={handleChange}
               type="text"
               placeholder="Enter please"
               disabled={!isEditable}
->>>>>>> Stashed changes
             />
           </div>
           <div class="profile-field last-name">
@@ -643,28 +615,6 @@ const ProfileUpdate = () => {
             <input
               id="lastName"
               type="text"
-<<<<<<< Updated upstream
-              placeholder="Enter please"
-              name="lastName"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div class="profile-field phone">
-          <label for="phone">Phone Number</label>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="Enter your phone number"
-            name="contactNo"
-            onChange={handleChange}
-          />
-        </div>
-        {/* <div class="profile-field dob">
-          <label for="dob">Date of Birth</label>
-          <input id="dob" type="date" />
-        </div> */}
-=======
               value={formData.lastName}
               placeholder="Enter please"
               name="lastName"
@@ -753,22 +703,15 @@ const ProfileUpdate = () => {
             disabled={!isEditable}
           />
         </div>
->>>>>>> Stashed changes
         <div className="profile-field gender">
           <label htmlFor="gender">Gender</label>
           <select
             id="gender"
-<<<<<<< Updated upstream
-            name="gender" // Add name attribute
-            value={formData.gender} // Bind the value to formData.gender
-            onChange={handleChange} // Add the onChange event handler
-=======
             name="gender"
             value={formData.gender}
             onChange={handleChange}
             disabled={!isEditable}
 
->>>>>>> Stashed changes
           >
             <option value="" disabled>
               Select your gender
@@ -779,14 +722,10 @@ const ProfileUpdate = () => {
           </select>
         </div>
 
-<<<<<<< Updated upstream
-        <button type="submit" onClick={notify}>Submit</button>
-=======
         <button type="button" onClick={toggleEditModed}>
           {isEditable ? "Cancel Edit" : "Edit Profile"}
         </button>
         {isEditable && <button type="submit">Submit</button>}
->>>>>>> Stashed changes
         <ToastContainer />
       </form>
     </div>

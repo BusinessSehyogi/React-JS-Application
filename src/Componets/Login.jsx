@@ -9,7 +9,6 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; // Import icons
 
-
 function Login({ closeModal }) {
   const navigate = useNavigate();
   const firebaseConfig = {
@@ -48,22 +47,38 @@ function Login({ closeModal }) {
       // let response = await fetch(url);
       // let date = await response.json();
 
-      let url = `http://${globalVariable.value}/login/${formData.email}`;
+      let url = `http://${globalVariable.value}/checkEmail/${formData.email}`;
       let response = await fetch(url, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       });
 
-      let data = await response.json();
+      let user = await response.text();
 
-      if (formData.password === data.password) {
-        sessionStorage.setItem("Token", data.userId);
-        sessionStorage.setItem("Email", data.email);
-        navigate("/FounderDashboard");
-      } else {
-        alert("Please check your password and username");
+      console.log(user);
+
+      if (user == "true") {
+        let url = `http://${globalVariable.value}/login/${formData.email}`;
+        let response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        let data = await response.json();
+
+        if (formData.password === data.password) {
+          sessionStorage.setItem("Token", data.userId);
+          sessionStorage.setItem("Email", data.email);
+          navigate("/FounderPostHome");
+        } else {
+          alert("Please check your password and username");
+        }
+      } else{
+        alert("User does not exist.");
       }
     } catch (error) {
       console.error("Error registering user:", error);
@@ -95,7 +110,7 @@ function Login({ closeModal }) {
         if (responseText.visible) {
           sessionStorage.setItem("Token", responseText.userId);
           sessionStorage.setItem("Email", responseText.email);
-          navigate("/FounderDashboard");
+          navigate("/FounderPostHome");
         } else {
           alert("Sorry.. Your account has been blocked by admin..!");
         }
@@ -113,7 +128,6 @@ function Login({ closeModal }) {
         } else {
           console.error("Error fetching data:", response.status);
         }
-        
 
         let urlRegisterUser = `http://${globalVariable.value}/registerUser`;
         let responseRegisterUser = await fetch(urlRegisterUser, {
@@ -161,11 +175,11 @@ function Login({ closeModal }) {
 
   const fetchImage = async (imageUrl) => {
     console.log(imageUrl);
-    
+
     try {
       const response = await fetch(imageUrl);
       console.log(response.status);
-      
+
       if (!response.ok) {
         throw new Error("Failed to fetch the image.");
       }
@@ -237,7 +251,7 @@ function Login({ closeModal }) {
   useEffect(() => {
     const token = sessionStorage.getItem("Token"); // Change localStorage to sessionStorage
     if (token) {
-      navigate("/FounderDashboard"); // Redirect to home if token exists
+      navigate("/FounderPostHome"); // Redirect to home if token exists
     }
   }, [navigate]);
 

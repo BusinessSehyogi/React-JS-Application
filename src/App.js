@@ -13,6 +13,8 @@ import ProfileUpdate from "./Componets/ProfileUpdate"
 // import FounderHomepage from './Componets/FounderHomepage';
 import EditProfileModal from "./Componets/EditProfileModal";
 import FounderPostHome from './Componets/FounderPostHome';
+import PostFullDetails from './Componets/PostFullDetails';
+
 
 
 
@@ -33,12 +35,10 @@ function App() {
       <Route exact path='/EditProfileModal' element={<EditProfileModal/>}/>
       <Route exact path='/FounderDashboard' element={<FounderDashboard/>}/>
       <Route exact path='/ProfileUpdate' element={<ProfileUpdate/>}/>
-<<<<<<< Updated upstream
-=======
       <Route exact path='/FounderPostHome' element={<FounderPostHome/>}/>
+      <Route exact path='/PostFullDetails' element={<PostFullDetails/>}/>
       
       
->>>>>>> Stashed changes
         </Routes>
         </BrowserRouter>
       

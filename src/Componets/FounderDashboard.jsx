@@ -34,6 +34,33 @@ const FounderDashboard = () => {
     fetchData();
   }, []);
 
+
+  const handleDeletePost = async (postId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+    if (!confirmDelete) return;
+
+    try {
+      const url = `http://${globalVariable.value}/deletePost/${postId}`;
+      const response = await fetch(url, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        alert("Post deleted successfully!");
+        setFounderData((prevData) => ({
+          businessIdeas: prevData.businessIdeas.filter((idea) => idea.postId !== postId),
+        }));
+      } else {
+        console.error("Failed to delete the post");
+        const errorMessage = await response.text();
+        alert(`Error: ${errorMessage}`);
+      }
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      alert('An error occurred while deleting the post.');
+    }
+  };
+
   const handleEditProfileClick = () => {
     setEditProfileOpen(true); // Open the edit profile modal
   };
@@ -190,6 +217,12 @@ const FounderDashboard = () => {
                     ))}
                   </div>
                 )}
+                <button
+                  className="delete-post-button"
+                  onClick={() => handleDeletePost(idea.postId)}
+                >
+                  Delete
+                </button>
               </div>
             ))
           ) : (

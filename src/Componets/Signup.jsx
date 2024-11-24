@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { globalVariable } from "./globalVariables";
-import "./signup.css"; // Ensure this CSS file is created and linked
+import "./Signup.css"; // Ensure this CSS file is created and linked
 import InvestorSignupone from "./InvestorSignupone";
 import InvestorSignuptwo from "./InvestorSignuptwo";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
@@ -49,8 +49,6 @@ function Signup({ onClose, closeModal }) {
     } else {
       console.error("Error fetching data:", response.status);
     }
-
-    console.log(date);
 
     url = `http://${globalVariable.value}/registerUser`;
     response = await fetch(url, {

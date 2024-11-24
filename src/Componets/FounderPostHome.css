@@ -1,12 +1,40 @@
-.post-cards-container{
-    margin-top:55px
-}
+.post-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 20px; /* Spacing between cards */
+    margin: 20px;
+  }
 .Create-Post-home{
     display: flex;
     height: 7vh;
     margin-left: 6vw;
 }
 .Founder-Post-create{
-    margin-left: 31vw;
+    margin-left: 16vw;
 
 }
+
+.post-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+} 
+
+.post-card:hover {
+    transform: translateY(-5px);
+  }
+
+  @media (max-width: 768px) {
+    .post-cards-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .post-cards-container {
+      grid-template-columns: 1fr; /* 1 card per row on small screens */
+    }
+  }
