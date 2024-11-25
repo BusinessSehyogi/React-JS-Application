@@ -48,7 +48,7 @@ function Login({ closeModal }) {
       // let response = await fetch(url);
       // let date = await response.json();
 
-      let url = `http://${globalVariable.value}/login/${formData.email}`;
+      let url = `http://${globalVariable.value}/login?email=${formData.email}&password=${formData.password}`;
       let response = await fetch(url, {
         method: "GET",
         headers: {
@@ -58,9 +58,12 @@ function Login({ closeModal }) {
 
       let data = await response.json();
 
-      if (formData.password === data.password) {
-        sessionStorage.setItem("Token", data.userId);
-        sessionStorage.setItem("Email", data.email);
+      if (data) {
+        let url = `http://${globalVariable.value}/getUser/${formData.email}`;
+        let response = await fetch(url, { method: "GET" });
+        let responseText2 = await response.json();
+        sessionStorage.setItem("Token", responseText2.userId);
+        sessionStorage.setItem("Email", responseText2.email);
         navigate("/FounderPostHome");
       } else {
         alert("Please check your password and username");
@@ -73,7 +76,6 @@ function Login({ closeModal }) {
   const handleSuccess = async (credentialResponse) => {
     try {
       const decode = jwtDecode(credentialResponse?.credential);
-      console.log(decode);
       const emailId = decode["email"];
       const imageUrl = decode["picture"];
 
@@ -89,12 +91,15 @@ function Login({ closeModal }) {
       }
 
       if (responseText === "true") {
-        let url = `http://${globalVariable.value}/login/${emailId}`;
+        let url = `http://${globalVariable.value}/login?email=${emailId}&password=businessSehyogi9876543210`;
         let response = await fetch(url, { method: "GET" });
         let responseText = await response.json();
-        if (responseText.visible) {
-          sessionStorage.setItem("Token", responseText.userId);
-          sessionStorage.setItem("Email", responseText.email);
+        if (responseText) {
+          let url = `http://${globalVariable.value}/getUser/${emailId}`;
+          let response = await fetch(url, { method: "GET" });
+          let responseText2 = await response.json();
+          sessionStorage.setItem("Token", responseText2.userId);
+          sessionStorage.setItem("Email", responseText2.email);
           navigate("/FounderPostHome");
         } else {
           alert("Sorry.. Your account has been blocked by admin..!");
@@ -146,13 +151,10 @@ function Login({ closeModal }) {
         });
 
         const imageBlob = await fetchImage(imageUrl);
-        console.log("Image Fetched");
         const jpegBlob = await convertBlobToJpeg(imageBlob);
-        console.log("Converted to image");
         await uploadImageToFirebase(jpegBlob, userId);
-        console.log("Image uploaded");
         closeModal();
-        navigate("/ProfileUpdate");
+        navigate("/FounderPostHome");
       }
     } catch (error) {
       console.error("Error processing Google login:", error);
@@ -160,11 +162,9 @@ function Login({ closeModal }) {
   };
 
   const fetchImage = async (imageUrl) => {
-    console.log(imageUrl);
     
     try {
       const response = await fetch(imageUrl);
-      console.log(response.status);
       
       if (!response.ok) {
         throw new Error("Failed to fetch the image.");

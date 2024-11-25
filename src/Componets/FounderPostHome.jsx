@@ -14,7 +14,7 @@ const FounderPostHome = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [page, setPage] = useState(0); // State for page number
   const [hasMoreData, setHasMoreData] = useState(true); // State to track if there's more data
-  let userId = Number(sessionStorage.getItem("Token"));
+  let userId = sessionStorage.getItem("Token");
   let email = sessionStorage.getItem("Email");
   let data;
 
@@ -27,45 +27,6 @@ const FounderPostHome = () => {
     dateOfBirth: "",
     photo: "",
   });
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       let url = `http://${globalVariable.value}/getPostForHomePage/${userId}`;
-  //       let response = await fetch(url, {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       const data = await response.json();
-  //       setFounderData({ businessIdeas: data });
-  //     } catch (error) {
-  //       console.error("Error fetching founder data:", error);
-  //     }
-
-  //     try {
-  //       let url = `http://${globalVariable.value}/getUser/${email}`;
-  //       let response = await fetch(url, {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       data = await response.json();
-  //     } catch (error) {
-  //       console.error("Error fetching founder data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -118,6 +79,8 @@ const FounderPostHome = () => {
 
   const fetchUser = async (currentPage) => {
     try {
+      console.log("userId",userId);
+      
       let url = `http://${globalVariable.value}/getPostForHomePage/${userId}?page=${currentPage}`;
       const response = await fetch(url);
       if (!response.ok) {

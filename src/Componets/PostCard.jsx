@@ -229,10 +229,12 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
         if (response.ok) {
           const data = await response.json();
           console.log("Raw data:", JSON.stringify(data[0]["comment"]));
-  
+
           // Ensure data.comments is an array
-          const commentsArray = Array.isArray(data[0].comment) ? data[0].comment : [data[0].comment].filter(Boolean);
-  
+          const commentsArray = Array.isArray(data[0].comment)
+            ? data[0].comment
+            : [data[0].comment].filter(Boolean);
+
           setComments(commentsArray);
           // localStorage.setItem(comments-${post.postId}, JSON.stringify(commentsArray[0]));
           // console.log("Processed comments array:", commentsArray[0]);
@@ -243,7 +245,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
         console.error("Error fetching comments:", error);
       }
     };
-  
+
     fetchComments();
   }, [post.postId, globalVariable.value]);
 
@@ -349,9 +351,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
     setIsInterested((prev) => !prev);
   };
 
-  const handleNotInterested = () => {
-  
-  };
+  const handleNotInterested = () => {};
   // const handleInterested = () => {
   //   setIsInterested((prevState) => !prevState); // Toggle the state
   // };
@@ -386,19 +386,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
           <FaComment />
         </button>
 
-        <div className="interest-buttons">
-
-        <button
-    className={`interested-button ${isInterested ? "active" : ""}`}
-    onClick={handleInterested}
-    style={{
-      backgroundColor: isInterested ? "#28a745" : "#f8f9fa", // Green when active, default when inactive
-      color: isInterested ? "white" : "black", // White text for active state
-    }}
-  >
-    <FaThumbsUp /> 
-  </button>
-    </div>
 
         {/* Payment Button */}
         <button
@@ -425,7 +412,8 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
               comments.map((comment, index) => (
                 <div key={comment.commentId || index} className="comment-item">
                   <p>
-                    <strong>{comment?.user?.firstName || "Vivek"}:</strong> {comment?.comment || "Nice Idea"}
+                    <strong>{comment?.user?.firstName || "Vivek"}:</strong>{" "}
+                    {comment?.comment || "Nice Idea"}
                   </p>
                   <button onClick={() => deleteComment(comment.commentId)}>
                     <FaTrash />
