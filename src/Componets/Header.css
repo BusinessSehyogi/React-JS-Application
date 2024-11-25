@@ -11,7 +11,7 @@
   }
   
   .sidebar.closed {
-    width: 50px; /* Width when the sidebar is collapsed */
+    width: 102px; /* Width when the sidebar is collapsed */
   }
   
   .sidebar-icons {

@@ -22,50 +22,50 @@ const FounderPostHome = () => {
     firstName: "",
     lastName: "",
     email: "",
-    contactNo: "", 
+    contactNo: "",
     gender: "",
     dateOfBirth: "",
     photo: "",
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let url = `http://${globalVariable.value}/getPostForHomePage/${userId}`;
-        let response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setFounderData({ businessIdeas: data });
-      } catch (error) {
-        console.error("Error fetching founder data:", error);
-      }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       let url = `http://${globalVariable.value}/getPostForHomePage/${userId}`;
+  //       let response = await fetch(url, {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       const data = await response.json();
+  //       setFounderData({ businessIdeas: data });
+  //     } catch (error) {
+  //       console.error("Error fetching founder data:", error);
+  //     }
 
-      try {
-        let url = `http://${globalVariable.value}/getUser/${email}`;
-        let response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        data = await response.json();
-      } catch (error) {
-        console.error("Error fetching founder data:", error);
-      }
-    };
+  //     try {
+  //       let url = `http://${globalVariable.value}/getUser/${email}`;
+  //       let response = await fetch(url, {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       data = await response.json();
+  //     } catch (error) {
+  //       console.error("Error fetching founder data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -188,4 +188,4 @@ const FounderPostHome = () => {
   );
 };
 
-export default FounderPostHome;
+export default FounderPostHome

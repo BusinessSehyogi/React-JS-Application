@@ -1,3 +1,3 @@
 export const globalVariable = {
-    value: "10.200.25.85:8080",
+    value: "192.168.224.55:8080",
 };

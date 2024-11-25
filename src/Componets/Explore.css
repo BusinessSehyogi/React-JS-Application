@@ -1,0 +1,65 @@
+.explore-container {
+    padding: 20px;
+  }
+  
+  .search-section {
+    display: flex;
+        justify-content: center;
+        /* margin-bottom: 220px; */
+        margin-top: 99px;
+        width: 358px;
+        margin-left: 655px;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .users-list {
+    display: grid
+    ;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        justify-items: end;
+        width: 81%;
+        /* justify-items: normal; */
+        margin-left: 224px;
+        margin-top: 11px;
+  }
+  
+  .user-card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .user-details h3 {
+    margin: 0 0 10px;
+  }
+  
+  .connect-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+  }
+  

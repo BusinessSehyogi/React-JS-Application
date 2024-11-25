@@ -14,6 +14,7 @@ import ProfileUpdate from "./Componets/ProfileUpdate"
 import EditProfileModal from "./Componets/EditProfileModal";
 import FounderPostHome from './Componets/FounderPostHome';
 import PostFullDetails from './Componets/PostFullDetails';
+import Explore from './Componets/Explore';
 
 
 
@@ -37,6 +38,7 @@ function App() {
       <Route exact path='/ProfileUpdate' element={<ProfileUpdate/>}/>
       <Route exact path='/FounderPostHome' element={<FounderPostHome/>}/>
       <Route exact path='/PostFullDetails' element={<PostFullDetails/>}/>
+      <Route exact path='/Explore' element={<Explore/>}/>
       
       
         </Routes>

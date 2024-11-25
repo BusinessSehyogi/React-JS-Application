@@ -60,12 +60,12 @@
   .comment-button {
     background-color: gray;
     color: white;
-    margin-left: 4px;
+    margin-left: -10px;
   }
   
   .like-button{
     background-color: white;
-
+    margin-left: -10px;
   }
 
   .comments-section {
@@ -153,11 +153,34 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    margin-left: 56px;
+    margin-left: 6px;
   }
   
   .payment-button:hover {
     background-color: #45a049;
   }
+
+  .interested-button.active {
+    background-color: green;
+    color: white;
+  }
+
+  .interested-button {
+    background-color: lightgray; /* Default color when deactivated */
+    color: #555; /* Deactivated text/icon color */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .not-interested-button.active {
+    background-color: red;
+    color: white;
+  }
+.interest-buttons{
+  margin-left: 2px;
+}  
   
 

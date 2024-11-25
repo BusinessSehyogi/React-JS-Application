@@ -50,6 +50,8 @@ function Signup({ onClose, closeModal }) {
       console.error("Error fetching data:", response.status);
     }
 
+    console.log(date);
+
     url = `http://${globalVariable.value}/registerUser`;
     response = await fetch(url, {
       method: "POST",

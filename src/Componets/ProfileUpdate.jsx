@@ -20,6 +20,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { initializeApp } from "firebase/app";
 import * as storageFunctions from "firebase/storage";
+import Header from "./Header";
 
 
 
@@ -87,16 +88,16 @@ const ProfileUpdate = () => {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
-          password: "",
+          password: formData.password,
           gender: formData.gender,
           contactNo: formData.contactNo,
-          category: "Founder",
-          photo: "",
-          visible: "",
-          emailVerified: "",
-          contactNoVerified: "",
-          dateTimeOfRegistration: "",
-          dateOfBirth: "",
+          category: "Investor",
+          photo: null,
+          visible: false,
+          emailVerified: false,
+          contactNoVerified: false,
+          dateTimeOfRegistration: null,
+          dateOfBirth: null,
         }),
       });
 
@@ -457,7 +458,7 @@ const ProfileUpdate = () => {
 
   return (
     <div className="dashboard-container">
-      <div className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
+      {/* <div className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
         <div className="toggle-button" onClick={toggleSidebar}>
           <FaBars />
         </div>
@@ -521,7 +522,7 @@ const ProfileUpdate = () => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* {userInfoOpen && (
         <div className={`user-info ${userInfoOpen ? 'open' : ''}`}>
@@ -536,7 +537,7 @@ const ProfileUpdate = () => {
 
       {/* {editProfileOpen && <EditProfileModal closeModal={handleCloseEditProfile} founderData={founderData} />} */}
 
-      <header className="dashboard-header">
+      {/* <header className="dashboard-header">
         <img src={logo} alt="Company Logo" className="company-logo" />
         <form className="search-form" onSubmit={handleSearch}>
 
@@ -553,7 +554,7 @@ const ProfileUpdate = () => {
             Search
           </button>
         </form>
-      </header>
+      </header> */}
 
       <div className="right-sidebar">
     <div className="followers-section">
@@ -561,6 +562,8 @@ const ProfileUpdate = () => {
       <p>{followersCount}</p>
     </div>
   </div>
+
+  <Header/>
 
       <form class="profile-form" onSubmit={handleSubmit}>
 
