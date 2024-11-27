@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import PostFullDetails from "./PostFullDetails";
 
 const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
-  // console.log("PostUser",postUser)
+  // console.log("PostUser",post.postId)
 
   const navigate = useNavigate();
 
@@ -78,7 +78,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
       headers: { "Content-Type": "application/json" },
     });
     let data = await response;
-    // console.log(data);
+    console.log("addlikes",data);
 
     const newLikeState = !isLiked;
     setIsLiked(newLikeState);
@@ -88,14 +88,22 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
     await fetchLikesCount();
   };
 
+ 
   const fetchLikesCount = async () => {
     const postId = post.postId;
+    console.log("checkingIdlikes->",postId)
     try {
       const url = `http://${globalVariable.value}/getTotalLikesOfPost/${postId}`;
-      const response = await fetch(url);
+      const response = await fetch(url,{
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
       const data = await response.json();
+      console.log("TotalLikes->",data)
       if (data !== undefined) {
         setLikesCount(data);
+
+
         // console.log("data.like-", data.likes);
       } else {
         console.error("API did not return likes count");
@@ -104,10 +112,11 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
       console.error("Error fetching likes count:", error);
     }
   };
+  console.log("setLikes",likesCount)
 
   useEffect(() => {
     fetchLikesCount();
-  }, [post.postId]);
+  }, []);
 
   const handleLikeToggle = async () => {
     const postId = post.postId;
@@ -135,8 +144,12 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
     }
   };
 
-  const toggleComments = () => {
-    setCommentsVisible(!commentsVisible);
+  const toggleComments = (Id) => {
+    // console.log("Idchecking",Id)
+    if(post.postId==Id){
+      setCommentsVisible(!commentsVisible);
+    }
+   
   };
 
   useEffect(() => {
@@ -198,6 +211,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
         localStorage.setItem(
           `comments-${post.postId}`,
           JSON.stringify(updatedComments)
+        
         );
         // console.log(setComments, "setNewComment");
       } else {
@@ -228,14 +242,15 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          console.log("Raw data:", JSON.stringify(data[0]["comment"]));
+          // console.log("commentdata",data)
+          // console.log("Raw data:", JSON.stringify(data[0]["comment"]));
 
-          // Ensure data.comments is an array
-          const commentsArray = Array.isArray(data[0].comment)
-            ? data[0].comment
-            : [data[0].comment].filter(Boolean);
+          // // Ensure data.comments is an array
+          // const commentsArray = Array.isArray(data[0].comment)
+          //   ? data[0].comment
+          //   : [data[0].comment].filter(Boolean);
 
-          setComments(commentsArray);
+          setComments(data);
           // localStorage.setItem(comments-${post.postId}, JSON.stringify(commentsArray[0]));
           // console.log("Processed comments array:", commentsArray[0]);
         } else {
@@ -258,6 +273,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
 
   // Delete a Comment
   const deleteComment = async (commentId) => {
+    // console.log("DeletecommentID",commentId)
     const url = `http://${globalVariable.value}/deleteComment/${commentId}`;
     try {
       const response = await fetch(url, {
@@ -268,10 +284,10 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
         setComments((prev) =>
           prev.filter((comment) => comment.commentId !== commentId)
         );
-        localStorage.setItem(
-          `comments-${post.postId}`,
-          JSON.stringify(comments)
-        );
+        // localStorage.setItem(
+        //   `comments-${post.postId}`,
+        //   JSON.stringify(comments)
+        // );
       } else {
         console.error("Failed to delete comment");
       }
@@ -279,6 +295,8 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
       console.error("Error while deleting comment:", error);
     }
   };
+  // console.log("comments",comments)
+  
 
   const handlePayment = async () => {
     try {
@@ -336,7 +354,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
     setIspostDetails(true);
     // console.log("hi");
 
-    navigate(`/PostFullDetails`, { state: { postIdDetails: postId } });
+    navigate(`/founder/PostFullDetails`, { state: { postIdDetails: postId } });
   };
   // console.log("postiddetailsin post", postIddetials);
 
@@ -368,7 +386,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
       <div className="post-actions">
         <button
           className="like-button"
-          onClick={handleLikeToggle}
+          onClick={getLikes}
           // onhandled={handleLikeToggle}
         >
           <FaHeart
@@ -382,7 +400,7 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
           {likesCount}
         </button>
 
-        <button className="comment-button" onClick={toggleComments}>
+        <button className="comment-button" onClick={()=>toggleComments(post.postId)}>
           <FaComment />
         </button>
 
@@ -408,12 +426,13 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
       {commentsVisible && (
         <div className="comments-section">
           <div className="comments-list">
+            
             {comments.length > 0 ? (
               comments.map((comment, index) => (
                 <div key={comment.commentId || index} className="comment-item">
                   <p>
                     <strong>{comment?.user?.firstName || "Vivek"}:</strong>{" "}
-                    {comment?.comment || "Nice Idea"}
+                    {comment?.comment || "Ni"}
                   </p>
                   <button onClick={() => deleteComment(comment.commentId)}>
                     <FaTrash />

@@ -64,7 +64,7 @@ function Login({ closeModal }) {
         let responseText2 = await response.json();
         sessionStorage.setItem("Token", responseText2.userId);
         sessionStorage.setItem("Email", responseText2.email);
-        navigate("/FounderPostHome");
+        navigate("/founder/FounderPostHome");
       } else {
         alert("Please check your password and username");
       }

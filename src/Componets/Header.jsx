@@ -12,6 +12,7 @@ import {
     FaPlus,
     FaCheckCircle,
     FaCompass,
+    FaQuestionCircle
   
   } from "react-icons/fa";
 
@@ -54,7 +55,7 @@ function Header() {
       }, [navigate]);
     
       const handleProfileClick = () => {
-        navigate("/ProfileUpdate");
+        navigate("/founder/ProfileUpdate");
       };
       useEffect(() => {
         const token = sessionStorage.getItem("Token");
@@ -74,31 +75,39 @@ function Header() {
           <>
             <div
               className="menu-item"
-              onClick={() => navigate("/FounderPostHome")}
+              onClick={() => navigate("/founder/FounderPostHome")}
             >
               <FaHome /> <span>Home</span>
             </div>
             <div
               className="menu-item"
-              onClick={() => navigate("/FounderDashboard")}
+              onClick={() => navigate("/founder/FounderDashboard")}
             >
               <FaLightbulb /> <span>My Ideas</span>
             </div>
-            <div className="menu-item" onClick={() => navigate("/messages")}>
+            <div className="menu-item" onClick={() => navigate("/founder/messages")}>
               <FaEnvelope /> <span>Messages</span>
             </div>
-            <div className="menu-item" onClick={() => navigate("/Explore")}>
+            <div className="menu-item" onClick={() => navigate("/founder/Explore")}>
               <FaCompass /> <span>Explore</span>
             </div>
             <div
               className="menu-item"
-              onClick={() => navigate("/notifications")}
+              onClick={() => navigate("/founder/notifications")}
             >
               <FaBell /> <span>Notifications</span>
             </div>
             <div className="menu-item" onClick={handleProfileClick}>
               <FaUser /> <span>Profile</span>
             </div>
+
+            <div
+        className="menu-item"
+         onClick={() => navigate("/founder/help")} // Define a route for Help if necessary
+          >
+          <FaQuestionCircle /> <span>Help</span>
+            </div>
+
             <button className="logout-button" onClick={handleLogout}>
               Logout
             </button>
@@ -108,25 +117,25 @@ function Header() {
             <div className="icon-container">
               <div
                 className="menu-item"
-                onClick={() => navigate("/FounderPostHome")}
+                onClick={() => navigate("/founder/FounderPostHome")}
               >
                 <FaHome />
               </div>
               <div
                 className="menu-item"
-                onClick={() => navigate("/FounderDashboard")}
+                onClick={() => navigate("/founder/FounderDashboard")}
               >
                 <FaLightbulb />
               </div>
-              <div className="menu-item" onClick={() => navigate("/messages")}>
+              <div className="menu-item" onClick={() => navigate("/founder/messages")}>
                 <FaEnvelope />
               </div>
-              <div className="menu-item" onClick={() => navigate("/Explore")}>
+              <div className="menu-item" onClick={() => navigate("/founder/Explore")}>
                 <FaCompass />
               </div>
               <div
                 className="menu-item"
-                onClick={() => navigate("/notifications")}
+                onClick={() => navigate("/founder/notifications")}
               >
                 <FaBell />
               </div>
