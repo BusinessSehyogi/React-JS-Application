@@ -5,68 +5,68 @@ import homepagepic from "../Images/businessperson-meeting-clip-art-transprent-pn
 import { globalVariable } from './globalVariables';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Signup.css';
 
-function InvestorSignuptwo() {
+function InvestorSignuptwo({ onBack, formData, setFormData }     ) {
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value
-        }));
-    };
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+      }
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
-    const [formData, setFormData] = useState({
-        totalInvestedAmount: '',
-        topInvestedComapines: ''
-    });
+    // const [formData, setFormData] = useState({
+    //     totalInvestedAmount: '',
+    //     topInvestedComapines: ''
+    // });
 
-    async function handleClick(event){
-        console.log(sessionStorage.getItem("UserType"))
-        event.preventDefault()
-        let url = `http//${globalVariable.value}/registerInvestor`;
-       let response=await fetch(url,{
-        method:'POST',
-            headers:{
-                'content-type':'application/json'
-            },
-            body:JSON.stringify(
-                {
-                    "user" : {
-                        "userId": 0,
-                        "userName":sessionStorage.getItem("FirstName"),
-                        "firstName": sessionStorage.getItem("FirstName"),
-                        "lastName": sessionStorage.getItem("LastName"),
-                        "email": sessionStorage.getItem("Email"),
-                        "ContactNo" : sessionStorage.getItem("Phone"),
-                        "category": sessionStorage.getItem("UserType"),
-                        "password":"123456",
-                        "visible": false,
-                        "emailVerified" : false,
-                        "contactnoVerified":false
-                    },
-                    "investor" : {
-                        "investorId" : 0,
-                        "totalInvestedAmount" : formData.totalInvestedAmount,
-                        "topInvestedComapines" : formData.topInvestedComapines,
-                        "userId" : 0
-                    }
-                }
-            ),
-        })  
-        const data= await response.json()
-        console.log(response.status)
-        if(response.status == 200){
-            toast('Thank you for registring. We will connect you soon.')
-            setTimeout(() => {
-                navigate("/");
-            }, 5000);
-        }
-        else{
-            toast("Already registered")
-        }
-        console.log(data)
-      }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     alert("Investor Signup Complete!");
+    //   };
+
+    // async function handleSubmit(e){
+    //     e.preventDefault()
+    //     let url = `http//${globalVariable.value}/registerInvestor`;
+    //    let response=await fetch(url,{
+    //     method:'POST',
+    //         headers:{
+    //             'content-type':'application/json'
+    //         },
+    //         body:JSON.stringify(
+    //             {
+    //                 "user" : {
+    //                     "userId": 0,
+    //                     "userName":sessionStorage.getItem("FirstName"),
+    //                     "firstName": sessionStorage.getItem("FirstName"),
+    //                     "lastName": sessionStorage.getItem("LastName"),
+    //                     "email": sessionStorage.getItem("Email"),
+    //                     "ContactNo" : sessionStorage.getItem("Phone"),
+    //                     "category": sessionStorage.getItem("UserType"),
+    //                     "password":false,
+    //                     "visible": false,
+    //                     "emailVerified" : false,
+    //                     "contactnoVerified":false
+    //                 },
+    //                 "investor" : {
+    //                     "investorId" : 0,
+    //                     "totalInvestedAmount" : formData.totalInvestedAmount,
+    //                     "topInvestedComapines" : formData.topInvestedComapines,
+    //                     "userId" : 0
+    //                 }
+    //             }
+    //         ),
+    //     })  
+    //     const data= await response.json()
+    //     if(response.status == 200){
+    //         toast('Thank you for registring. We will connect you soon.')
+    //         setTimeout(() => {
+    //             navigate("/");
+    //         }, 5000);
+    //     }
+    //     else{
+    //         toast("Already registered")
+    //     }
+    //   }
       
       
     
@@ -105,12 +105,13 @@ function InvestorSignuptwo() {
       
    </div>
 
-   <div className='input-container'> 
-            <div className='cont-input'>
-           <input type='text' placeholder='Companies you have invested' name = "topInvestedComapines" value={formData.topInvestedComapines} onChange={handleChange} className='input-1'/>
-           <input type='text' placeholder='Total amount to invest' name = "totalInvestedAmount" value={formData.totalInvestedAmount} onChange={handleChange} className='input-2'/>
+   <div className='input-container-Investor'> 
+            <div className='cont-input-Investor'>
+           <input type='text' placeholder='Companies you have invested' name = "topInvestedComapines" value={formData.topInvestedComapines} onChange={handleChange} className='founder-signup-field'/>
+           <input type='text' placeholder='Total amount to invest' name = "totalInvestedAmount" value={formData.totalInvestedAmount} onChange={handleChange} className='founder-signup-field'/>
            <div>
-           <button className='sign-up-invest' onClick={handleClick}>Sign Up</button>
+           <button onClick={onBack}>Back</button>
+           {/* <button onClick={handleSubmit}>Submit</button> */}
             <ToastContainer />
            </div>
            </div>

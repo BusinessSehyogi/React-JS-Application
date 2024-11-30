@@ -4,23 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { globalVariable } from './globalVariables';
 import './Signup.css';
 
-const InvestorSignupone = () => {
+const InvestorSignupone = ({ onNext, formData }) => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: ''
-    });
+    // const [formData, setFormData] = useState({
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     phone: ''
+    // });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value
-        }));
-    };
+        onNext({ ...formData, [name]: value }); // Update parent state directly
+      };
+
+      const handleNext = (e) => {
+        e.preventDefault();
+        onNext(formData); // Trigger the next step
+      };
 
     async function handleClick(event) {
         event.preventDefault(); // Prevent default form submission
@@ -117,7 +119,9 @@ const InvestorSignupone = () => {
                         onChange={handleChange}
                     />
                     <div>
-                        <button className='signup-investor-button' onClick={handleClick}>Next</button>
+                        <button className='signup-investor-button'
+                       
+                        onClick={handleNext}>Next</button>
                     </div>
                 </div>
             </div>

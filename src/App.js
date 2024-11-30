@@ -17,10 +17,21 @@ import Help from "./Componets/Help"
 import EditProfileModal from "./Componets/EditProfileModal";
 import FounderPostHome from './Componets/FounderPostHome';
 import PostFullDetails from "./Componets/PostFullDetails";
+import UserProfileDetails from "./Componets/UserProfileDetails"
 
 // admin
-// import AdminLogin from "./Componets/AdminLogin";
-// import AdminDashboard from "./Componets/AdminDashboard";
+import AdminLogin from "./Componets/AdminLogin";
+import AdminDashboard from "./Componets/AdminDashboard";
+
+
+//investor
+import InvestorDashboard from "./Componets/InvestorDashboard"
+import InvestorPostFullDetails from "./Componets/InvestorPostFullDetails"
+import InvestorsInterest from "./Componets/InvestorsInterest"
+
+import InvestorProfile from "./Componets/InvestorProfile";
+import InvestorsExplore from "./Componets/InvestorsExplore"
+import InvestorHelp from "./Componets/InvestorHelp"
 
 
 
@@ -49,16 +60,20 @@ function App() {
       <Route exact path='/founder/PostFullDetails' element={<PostFullDetails/>}/>
       <Route exact path='/founder/Explore' element={<Explore/>}/>
       <Route exact path='/founder/Help' element={<Help/>}/>
+      <Route exact path='/founder/UserProfileDetails' element={<UserProfileDetails/>}/>
 
         {/* Admin Routes */}
-        {/* <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
         {/* Investor Routes */}
-        {/* <Route 
-          path="/investor/*" 
-          element={<ProtectedRoute role="investor"><InvestorRoutes /></ProtectedRoute>} 
-        /> */}
+        <Route path="/investor/InvestorDashboard" element={<InvestorDashboard />} />
+        <Route path="/investor/InvestorPostFullDetails" element={<InvestorPostFullDetails/>} />
+       
+        <Route path="/investor/InvestorProfile" element={<InvestorProfile/>} />
+        <Route path="/investor/InvestorsExplore" element={<InvestorsExplore/>} />
+        <Route path="/investor/InvestorHelp" element={<InvestorHelp/>} />
+        <Route path="/investor/InvestorsInterest" element={<InvestorsInterest/>} />
       </Routes>
       </BrowserRouter>
   </div>

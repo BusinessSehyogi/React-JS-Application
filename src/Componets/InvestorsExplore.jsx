@@ -1,10 +1,10 @@
 import React, { useState,useEffect } from "react";
-import Header from "./Header";
+import InvestorHeader from "./InvestorHeader";
 import "./Explore.css"; // Add styles for the search bar
 import { globalVariable } from "./globalVariables";
 import {  useNavigate } from "react-router-dom";
 
-function Explore() {
+function InvestorsExplore() {
   const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,7 +36,6 @@ function Explore() {
   };
 
   const handleConnect = (userId) => {
-    console.log(`Connect button clicked for user ID: ${userId}`);
     // Add logic to handle connection (e.g., send a connection request)
   };
 
@@ -70,7 +69,7 @@ function Explore() {
 
   return (
     <div className="explore-container">
-      <Header />
+      <InvestorHeader/>
       <div className="search-section">
         <input
           type="text"
@@ -117,4 +116,4 @@ function Explore() {
   );
 }
 
-export default Explore;
+export default InvestorsExplore;

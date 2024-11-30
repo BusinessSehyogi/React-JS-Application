@@ -44,34 +44,73 @@ function Login({ closeModal }) {
   const handleClick = async (event) => {
     event.preventDefault();
     try {
-      // let url = `http://${globalVariable.value}/getCurrentDateTime`;
-      // let response = await fetch(url);
-      // let date = await response.json();
-
-      let url = `http://${globalVariable.value}/login?email=${formData.email}&password=${formData.password}`;
-      let response = await fetch(url, {
+      // Step 1: Validate email and password
+      const loginUrl = `http://${globalVariable.value}/login?email=${formData.email}&password=${formData.password}`;
+      const loginResponse = await fetch(loginUrl, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       });
 
-      let data = await response.json();
+      if (!loginResponse.ok) {
+        alert("Invalid email or password.");
+        return;
+      }
 
-      if (data) {
-        let url = `http://${globalVariable.value}/getUser/${formData.email}`;
-        let response = await fetch(url, { method: "GET" });
-        let responseText2 = await response.json();
-        sessionStorage.setItem("Token", responseText2.userId);
-        sessionStorage.setItem("Email", responseText2.email);
+      const isValidUser = await loginResponse.json();
+
+      if (!isValidUser) {
+        alert("Invalid email or password.");
+        return;
+      }
+
+
+      // let data = await response.json();
+
+
+      const userUrl = `http://${globalVariable.value}/getUser/${formData.email}`;
+      const userResponse = await fetch(userUrl, { method: "GET" });
+
+      if (!userResponse.ok) {
+        alert("Error fetching user details.");
+        return;
+      }
+
+      const userDetails = await userResponse.json();
+
+
+
+      if (userDetails["category"] == "Investor") {
+        const investorUrl = `http://${globalVariable.value}/getInvestor/${userDetails['userId']}`;
+        const investorResponse = await fetch(investorUrl, { method: "GET" });
+
+        const investorDetais = await investorResponse.json();
+        
+        sessionStorage.setItem("investorToken", investorDetais["investorId"]);
+
+      }
+
+
+
+      sessionStorage.setItem("Token", userDetails["userId"]);
+
+      sessionStorage.setItem("Email", userDetails.email);
+
+      if (userDetails.category === "Founder") {
         navigate("/founder/FounderPostHome");
+      } else if (userDetails.category === "Investor") {
+        navigate("/investor/InvestorDashboard");
       } else {
-        alert("Please check your password and username");
+        alert("Unknown user category. Please contact support.");
       }
     } catch (error) {
-      console.error("Error registering user:", error);
+      console.error("Error during login:", error);
+      alert("An error occurred while logging in. Please try again.", error);
     }
   };
+
+
 
   const handleSuccess = async (credentialResponse) => {
     try {
@@ -100,7 +139,7 @@ function Login({ closeModal }) {
           let responseText2 = await response.json();
           sessionStorage.setItem("Token", responseText2.userId);
           sessionStorage.setItem("Email", responseText2.email);
-          navigate("/FounderPostHome");
+          navigate("/founders/FounderPostHome");
         } else {
           alert("Sorry.. Your account has been blocked by admin..!");
         }
@@ -118,7 +157,7 @@ function Login({ closeModal }) {
         } else {
           console.error("Error fetching data:", response.status);
         }
-        
+
 
         let urlRegisterUser = `http://${globalVariable.value}/registerUser`;
         let responseRegisterUser = await fetch(urlRegisterUser, {
@@ -154,7 +193,7 @@ function Login({ closeModal }) {
         const jpegBlob = await convertBlobToJpeg(imageBlob);
         await uploadImageToFirebase(jpegBlob, userId);
         closeModal();
-        navigate("/FounderPostHome");
+        navigate("/founder/FounderPostHome");
       }
     } catch (error) {
       console.error("Error processing Google login:", error);
@@ -162,10 +201,10 @@ function Login({ closeModal }) {
   };
 
   const fetchImage = async (imageUrl) => {
-    
+
     try {
       const response = await fetch(imageUrl);
-      
+
       if (!response.ok) {
         throw new Error("Failed to fetch the image.");
       }
@@ -207,7 +246,6 @@ function Login({ closeModal }) {
     try {
       const storageRef = ref(storage, `userProfileImages/${userId}.jpg`);
       const result = await uploadBytes(storageRef, blob);
-      console.log("Image uploaded successfully!", result);
     } catch (error) {
       console.error("Error uploading image to Firebase:", error);
     }
@@ -237,7 +275,7 @@ function Login({ closeModal }) {
   useEffect(() => {
     const token = sessionStorage.getItem("Token"); // Change localStorage to sessionStorage
     if (token) {
-      navigate("/FounderPostHome"); // Redirect to home if token exists
+      navigate("/"); // Redirect to home if token exists
     }
   }, [navigate]);
 

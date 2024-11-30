@@ -38,7 +38,6 @@ function Header() {
       const handleSearch = (event) => {
         event.preventDefault();
         const searchTerm = event.target.value; // Capture the search term
-        console.log("Search term:", searchTerm);
       };
     
       const handleLogout = () => {

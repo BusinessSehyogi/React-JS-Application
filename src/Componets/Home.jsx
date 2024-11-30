@@ -48,7 +48,7 @@ function Home() {
   useEffect(() => {
     const token = sessionStorage.getItem("Token"); // Change localStorage to sessionStorage
     if (token) {
-      navigate("/founder/FounderPostHome"); // Redirect to home if token exists
+      navigate("/founder/FounderDashboard"); // Redirect to home if token exists
     }
   }, [navigate]);
 

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./PostFullDetails.css"; // Create this CSS for styling
-import Header from "./Header";
+import InvestorHeader from "./InvestorHeader";
 import { FaLightbulb, FaHeart, FaComment,FaTrash,FaMoneyBillWave,FaStar } from "react-icons/fa";
 import { globalVariable } from "./globalVariables";
 // import { useLocation } from 'react-router-dom';
 
 
-function PostFullDetails() {
+function InvestorPostFullDetails () {
    
 
     const [postsData, setPostsData] = useState({ businessIdeas: [] });
@@ -170,8 +170,7 @@ function PostFullDetails() {
    
   return (
     <div>
-      <div>
-        <Header/>
+        <InvestorHeader/>
        
       {postsData.businessIdeas && postsData.businessIdeas.length > 0 ? (
         
@@ -276,10 +275,7 @@ function PostFullDetails() {
     
     
     </div>
-
-    </div>
-    
   )
 }
 
-export default PostFullDetails
+export default InvestorPostFullDetails;

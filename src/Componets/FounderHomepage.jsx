@@ -31,7 +31,6 @@ function FounderHomepage() {
         event.preventDefault();
         const searchTerm = event.target.value; // Capture the search term
         // Add your search logic here, such as filtering data or making an API request
-        console.log('Search term:', searchTerm);
       };
     
       const handleLogout = () => {

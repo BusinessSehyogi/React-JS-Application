@@ -25,7 +25,6 @@ const EditProfileModal = ({ closeModal }) => {
 
   const handleSendOtp = () => {
     // Simulate sending OTP
-    console.log(`Sending OTP to ${phoneNumber}`);
     setIsOtpSent(true); // OTP sent
   };
 
@@ -34,7 +33,6 @@ const EditProfileModal = ({ closeModal }) => {
       alert("Please enter the OTP to proceed with the update.");
       return; // Prevent saving if OTP is not entered
     }
-    console.log({ firstName, lastName, phoneNumber, otp, profilePic });
     closeModal(); // Close modal after saving
   };
 

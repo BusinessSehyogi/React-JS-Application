@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom right, #e0eafc, #cfdef3);
+    /* background: linear-gradient(to bottom right, #e0eafc, #cfdef3); */
     /* overflow-x: hidden; */
     overflow-y: auto;
 }

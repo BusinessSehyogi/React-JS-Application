@@ -13,11 +13,14 @@ import {
 import { globalVariable } from "./globalVariables";
 import { useNavigate } from "react-router-dom";
 import PostFullDetails from "./PostFullDetails";
+import { useRazorpay, RazorpayOrderOptions } from "react-razorpay";
+
+
 
 const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
-  // console.log("PostUser",post.postId)
 
   const navigate = useNavigate();
+  const { error, isLoading, Razorpay } = useRazorpay();
 
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
@@ -71,14 +74,12 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
 
   const getLikes = async () => {
     let postId = post.postId;
-    // console.log(postId, "PostId");
     const url = `http://${globalVariable.value}/addLike/${userId}/${postId}`;
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     });
     let data = await response;
-    console.log("addlikes",data);
 
     const newLikeState = !isLiked;
     setIsLiked(newLikeState);
@@ -91,7 +92,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
  
   const fetchLikesCount = async () => {
     const postId = post.postId;
-    console.log("checkingIdlikes->",postId)
     try {
       const url = `http://${globalVariable.value}/getTotalLikesOfPost/${postId}`;
       const response = await fetch(url,{
@@ -99,12 +99,10 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await response.json();
-      console.log("TotalLikes->",data)
       if (data !== undefined) {
         setLikesCount(data);
 
 
-        // console.log("data.like-", data.likes);
       } else {
         console.error("API did not return likes count");
       }
@@ -112,7 +110,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
       console.error("Error fetching likes count:", error);
     }
   };
-  console.log("setLikes",likesCount)
 
   useEffect(() => {
     fetchLikesCount();
@@ -145,7 +142,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
   };
 
   const toggleComments = (Id) => {
-    // console.log("Idchecking",Id)
     if(post.postId==Id){
       setCommentsVisible(!commentsVisible);
     }
@@ -156,14 +152,13 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
     const fetchUser = async () => {
       try {
         let userId = Number(sessionStorage.getItem("Token"));
-        let url = `http://${globalVariable.value}/getPostsForHomePage/${userId}`;
+        let url = `http://${globalVariable.value}/getPostForHomePage/${userId}`;
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setFounderData({ businessIdeas: data }); // Store the fetched data
-        // console.log(data, "--Dashboard data user");
       } catch (error) {
         console.error("Error fetching founder data:", error);
         setFounderData([]);
@@ -172,19 +167,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
 
     fetchUser();
   }, []);
-
-  // console.log(founderData,"Founderdata")
-
-  // console.log("filterdata",founderData.filter((item)=>(
-  //   item.postId==post.postId
-  // )))
-
-  // console.log(Array.isArray(founderData));
-
-  // console.log("First Name in PostCard:", firstName);
-  // console.log("Post Object:", post);
-
-  // console.log("currentPost",currentPostData)
 
   // Handle New Comment Submission
   const submitComment = async () => {
@@ -213,7 +195,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
           JSON.stringify(updatedComments)
         
         );
-        // console.log(setComments, "setNewComment");
       } else {
         console.error("Failed to add comment");
       }
@@ -242,8 +223,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          // console.log("commentdata",data)
-          // console.log("Raw data:", JSON.stringify(data[0]["comment"]));
 
           // // Ensure data.comments is an array
           // const commentsArray = Array.isArray(data[0].comment)
@@ -252,7 +231,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
 
           setComments(data);
           // localStorage.setItem(comments-${post.postId}, JSON.stringify(commentsArray[0]));
-          // console.log("Processed comments array:", commentsArray[0]);
         } else {
           console.error("Failed to fetch comments");
         }
@@ -273,7 +251,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
 
   // Delete a Comment
   const deleteComment = async (commentId) => {
-    // console.log("DeletecommentID",commentId)
     const url = `http://${globalVariable.value}/deleteComment/${commentId}`;
     try {
       const response = await fetch(url, {
@@ -295,68 +272,101 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
       console.error("Error while deleting comment:", error);
     }
   };
-  // console.log("comments",comments)
   
 
   const handlePayment = async () => {
     try {
-      const dateTimeResponse = await fetch(
-        `http://${globalVariable.value}/getCurrentDateTime`,
-        {
-          method: "GET",
-        }
-      );
-
-      const currentDateTime = await dateTimeResponse.text();
-
       const paymentPayload = {
-        amount: 150.5,
-        paymentDateTime: currentDateTime,
-        transactionId: `txn_${Date.now()}`,
-        users: 11, // Direct integer value for users
-        posts: 2, // Direct integer value for posts
+        amount: 150 * 100, // Convert amount to paise (1 INR = 100 paise)
+        currency: "INR",
+        receipt: `receipt_${Date.now()}`,
       };
-
-      const paymentResponse = await fetch(
-        `http://${globalVariable.value}/addPayment`,
+  
+      // Step 1: Create a Razorpay order
+      const response = await fetch(
+        `http://${globalVariable.value}/createRazorpayOrder`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json", // Updated header
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(paymentPayload),
         }
       );
-
-      const paymentResult = await paymentResponse.text();
-
-      if (paymentResponse.ok) {
-        setIsPurchased(true);
-        setPaymentPopup(false);
-
-        localStorage.setItem(`purchased-${post.postId}`, "true");
-        // navigate("/FounderDashboard")
-        // console.log("Payment successful!", paymentResult);
-      } else {
-        console.error("Payment failed:", paymentResult);
-      }
+  
+      const orderData = await response.json();
+  
+      // Step 2: Initialize Razorpay payment
+      const options = {
+        key: "rzp_test_l1ICZHjDTy4OQL", // Replace with your Razorpay test key
+        amount: 5000, // Amount in paise
+        currency: "INR",
+        name: "Just testing",
+        description: "Test Transaction",
+        order_id: orderData.id, // Order ID returned by Razorpay
+        handler: async function (response) {
+          // Payment successful, send data to the /addPayment API
+          const paymentDetails = {
+            amount: orderData.amount / 100, // Convert back to INR
+            paymentDateTime: new Date().toISOString(),
+            transactionId: response.razorpay_payment_id,
+            users: userId, // Replace with logged-in user's ID
+            posts: post.postId, // Replace with the current post's ID
+          };
+  
+          try {
+            // Step 3: Send payment details to the backend
+            const paymentResponse = await fetch(
+              `http://${globalVariable.value}/addPayment`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(paymentDetails),
+              }
+            );
+  
+            if (paymentResponse.ok) {
+              const result = await paymentResponse.json();
+              setIsPurchased(true); // Mark the post as purchased
+              localStorage.setItem(`purchased-${post.postId}`, "true");
+            } else {
+              console.error("Failed to log payment:", paymentResponse.statusText);
+            }
+          } catch (error) {
+            console.error("Error sending payment details to backend:", error);
+          }
+        },
+        prefill: {
+          name: "Your Name", // Replace with user's name
+          email: "email@example.com", // Replace with user's email
+          contact: "9999999999", // Replace with user's contact
+        },
+        theme: {
+          color: "#F37254",
+        },
+      };
+  
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+  
+      razorpay.on("payment.failed", function (response) {
+        console.error("Payment failed:", response.error.description);
+      });
     } catch (error) {
-      console.error("Error during payment:", error);
+      console.error("Error during Razorpay payment:", error);
     }
   };
+  
+
+
 
   let postIdDetails = "";
 
   const handlePost = (postId) => {
-    // console.log("postcheckingid", postIdDetails);
     setpostIdDetails(postId);
 
     setIspostDetails(true);
-    // console.log("hi");
 
-    navigate(`/founder/PostFullDetails`, { state: { postIdDetails: postId } });
+    navigate(`/founders/PostFullDetails`, { state: { postIdDetails: postId } });
   };
-  // console.log("postiddetailsin post", postIddetials);
 
   useEffect(() => {
     const savedComments = localStorage.getItem(`comments-${post.postId}`);
@@ -374,7 +384,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
   //   setIsInterested((prevState) => !prevState); // Toggle the state
   // };
 
-  // console.log("likesCount2-", likesCount);
   // Delete comment from server and update localStorage
 
   return (
@@ -396,7 +405,6 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
               border: isLiked ? "2px  red" : "2px  black",
             }}
           />
-          {/* {console.log("likesCount", likesCount)} */}
           {likesCount}
         </button>
 
@@ -410,12 +418,9 @@ const PostCard = ({ post, userId, firstName, lastName, abstractContent }) => {
           className="payment-button"
           onClick={() => {
             if (isPurchased) {
-              // Navigate to full details page
-
-              handlePost(post.postId);
+              navigate("/founder/PostFullDetails", { state: { postId: post.postId } });
             } else {
-              // Open the payment popup
-              setPaymentPopup(true);
+              handlePayment();
             }
           }}
         >

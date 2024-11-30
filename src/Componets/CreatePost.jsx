@@ -55,7 +55,6 @@ const CreatePost = ({ addNewPost }) => {
     const previewUrls = files.map((file) => URL.createObjectURL(file));
     setImagePreviews(previewUrls);
   };
-  console.log(images,"Imagesafter upload")
 
   // let url = `http://${globalVariable.value}/getArea`;
   // let response = fetch(url, {
@@ -64,8 +63,6 @@ const CreatePost = ({ addNewPost }) => {
 
   // let area = "";
   // area = response.json();
-
-  // console.log(area);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -103,20 +100,15 @@ const CreatePost = ({ addNewPost }) => {
           areaId: 1,
         }),
       });
-      console.log(images, "Images in submit")
       let postimage=[]
       images.forEach((image, index) => (
          postimage= {image:`image_${index}`}
         
       ))
-      console.log("Postimage--",postimage)
       setFormData({
         photo:postimage
        })
-        console.log(formData,"formData")
       let responseText = await response.json();
-
-      console.log(responseText.postId);
       
 
       // {
@@ -157,7 +149,6 @@ const CreatePost = ({ addNewPost }) => {
     event.preventDefault();
     const searchTerm = event.target.value; // Capture the search term
     // Add your search logic here, such as filtering data or making an API request
-    console.log("Search term:", searchTerm);
   };
 
   const handleLogout = () => {

@@ -32,12 +32,9 @@
     display: grid
     ;
         grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        gap: 13px;
         justify-items: end;
-        width: 81%;
-        /* justify-items: normal; */
-        margin-left: 224px;
-        margin-top: 11px;
+        margin-top: 36px;
   }
   
   .user-card {

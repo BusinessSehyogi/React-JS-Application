@@ -79,7 +79,6 @@ const FounderPostHome = () => {
 
   const fetchUser = async (currentPage) => {
     try {
-      console.log("userId",userId);
       
       let url = `http://${globalVariable.value}/getPostForHomePage/${userId}?page=${currentPage}`;
       const response = await fetch(url);

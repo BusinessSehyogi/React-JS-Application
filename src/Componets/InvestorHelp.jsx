@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Header from "./Header";
-import "./help.css"; // Include styles for the Help page
 
-function Help() {
+import "./help.css"; // Include styles for the Help page
+import InvestorHeader from "./InvestorHeader";
+
+function InvestorHelp() {
   const [email, setEmail] = useState("");
   const [question, setQuestion] = useState("");
 
@@ -13,7 +14,6 @@ function Help() {
       alert("Please fill in all fields.");
       return;
     }
-
     alert("Your query has been submitted successfully!");
     
     // Clear the input fields
@@ -23,7 +23,7 @@ function Help() {
 
   return (
     <div>
-      <Header />
+      <InvestorHeader/>
       <div className="help-container">
         <h1>Need Help?</h1>
         <p>Please enter your email and your question below, and we'll get back to you as soon as possible.</p>
@@ -58,4 +58,4 @@ function Help() {
   );
 }
 
-export default Help;
+export default InvestorHelp;

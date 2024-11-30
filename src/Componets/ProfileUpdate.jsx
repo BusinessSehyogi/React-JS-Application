@@ -73,7 +73,6 @@ const ProfileUpdate = () => {
 
 
   const handleSubmit = async (event) => {
-    console.log(formData.gender);
 
     event.preventDefault();
     try {
@@ -124,7 +123,6 @@ const ProfileUpdate = () => {
   // });
 
   // const handleSubmit = async (event) => {
-  //   console.log(formData.gender);
 
   //   event.preventDefault();
   //   try {
@@ -190,7 +188,6 @@ const ProfileUpdate = () => {
           throw new Error("Network response was not ok");
         }
         data = await response.json();
-        console.log(data);
       } catch (error) {
         console.error("Error fetching founder data:", error);
       }
@@ -286,7 +283,6 @@ const ProfileUpdate = () => {
       // sessionStorage.setItem("userProfile", JSON.stringify(updatedProfile));
     }
     let imageName = userId + ".jpg";
-    console.log("imageName ", imageName);
 
 
     await uploadImageToFirebase();
@@ -319,7 +315,6 @@ const ProfileUpdate = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     const searchTerm = event.target.value; // Capture the search term
-    console.log("Search term:", searchTerm);
   };
 
   const handleLogout = () => {
@@ -397,7 +392,6 @@ const ProfileUpdate = () => {
       headers: { "Content-Type": "application/json" }
     });
     OTPData = await response.json();
-    console.log(data);
 
     if (response.ok) {
       toast(`OTP sent to your ${type}`);
@@ -412,7 +406,6 @@ const ProfileUpdate = () => {
       headers: { "Content-Type": "application/json" }
     });
     let data = await response.json();
-    console.log(data);
 
     if (response.ok) {
       toast(`OTP sent to your ${type}`);
@@ -433,8 +426,6 @@ const ProfileUpdate = () => {
     // }
 
     if (OTPData == otpForEmail.value) {
-      console.log("OTP is same...!");
-      console.log(userId);
       const url = `http://${globalVariable.value}/verifyEmail/${userId}`;
       const response = await fetch(url, {
         method: "GET",

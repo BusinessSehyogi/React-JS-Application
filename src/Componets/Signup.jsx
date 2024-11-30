@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { globalVariable } from "./globalVariables";
-import "./Signup.css"; // Ensure this CSS file is created and linked
-import InvestorSignupone from "./InvestorSignupone";
-import InvestorSignuptwo from "./InvestorSignuptwo";
+import "./Signup.css"; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import FounderSignup from "./FounderSignup";
 import { jwtDecode } from "jwt-decode";
@@ -19,12 +20,20 @@ function Signup({ onClose, closeModal }) {
     email: "",
     password: "",
     confirmPassword: "",
+    
+  });
+
+  const [investorFormData, setInvestorFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    investedCompanies: "",
+    amountInvested: "",
   });
 
   const handleSuccess = (credentialResponse) => {
-    console.log("Success", credentialResponse);
     const decode = jwtDecode(credentialResponse?.credential);
-    console.log(decode);
   };
 
   const handleError = () => {
@@ -50,8 +59,6 @@ function Signup({ onClose, closeModal }) {
       console.error("Error fetching data:", response.status);
     }
 
-    console.log(date);
-
     url = `http://${globalVariable.value}/registerUser`;
     response = await fetch(url, {
       method: "POST",
@@ -73,11 +80,81 @@ function Signup({ onClose, closeModal }) {
     });
 
     if (response.status === 200) {
-      alert("Registration is successful");
-      navigate("/");
+      toast("Registration is successful");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } else {
-      alert("Already registered");
+      toast("Already registered");
     }
+  };
+
+  const handleInvestorSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(`http://${globalVariable.value}/registerInvestor`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        
+        body: JSON.stringify({
+          
+          user: {
+            userId: 0,
+            firstName: investorFormData.firstName,
+            lastName: investorFormData.lastName,
+            email:investorFormData.email,
+            password: "securePassword123", 
+            gender: "U", 
+            contactNo: investorFormData.phone,
+            noOfConnections: 1, 
+            noOfIdeas: 1,
+            category: "Investor", 
+            photo: "default.jpg", 
+            visible: "true", 
+            emailVerified: "false",
+            contactNoVerified: "false", 
+            dateTimeOfRegistration: null, 
+            dateOfBirth: null, 
+          },
+          investor: {
+            totalInvestedAmount: investorFormData.amountInvested,
+            topInvestedCompanies: investorFormData.investedCompanies,
+            user_id: 0, 
+          },
+        }),
+      });
+
+      if (response.status === 200) {
+        toast("Investor registration successful! Check mail for future updates");
+        
+        setTimeout(() => {
+          closeModal();
+          navigate("/");
+        }, 10000)
+         // Redirect to home
+
+      } else {
+        toast("Investor registration failed. User might already be registered.");
+        setTimeout(() => {
+          closeModal();
+          navigate("/");
+        }, 5000)
+      }
+    } catch (error) {
+      console.error("Error submitting investor data:", error);
+      toast("An error occurred during registration. Please try again.");
+    }
+  };
+
+  const handleInvestorChange = (e) => {
+    const { name, value } = e.target;
+    setInvestorFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleChange = (e) => {
@@ -133,7 +210,65 @@ function Signup({ onClose, closeModal }) {
             </button>
           </div>
           {selectedComponent === "founder" ? <FounderSignup /> : null}
-          {selectedComponent === "investor" ? <InvestorSignupone /> : null}
+          {selectedComponent === "investor" && (
+            <div className="input-container-investor">
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={investorFormData.firstName}
+                className="input-field"
+                onChange={handleInvestorChange}
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={investorFormData.lastName}
+                className="input-field"
+                onChange={handleInvestorChange}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={investorFormData.email}
+                className="input-field"
+                onChange={handleInvestorChange}
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                value={investorFormData.phone}
+                className="input-field"
+                onChange={handleInvestorChange}
+              />
+              <input
+                type="text"
+                name="investedCompanies"
+                placeholder="Companies You Have Invested In"
+                value={investorFormData.investedCompanies}
+                className="input-field"
+                onChange={handleInvestorChange}
+              />
+              <input
+                type="text"
+                name="amountInvested"
+                placeholder="Total Amount Invested"
+                value={investorFormData.amountInvested}
+                className="input-field"
+                onChange={handleInvestorChange}
+              />
+              <button
+                className="submit-button"
+                onClick={handleInvestorSubmit}
+              >
+                Submit
+              </button>
+            </div>
+          )}
+          
           <hr></hr>
           <GoogleOAuthProvider clientId="422099475744-bld6nl3obcj7n6s5ct4i93ln52spcob7.apps.googleusercontent.com">
             <GoogleLogin
@@ -142,6 +277,7 @@ function Signup({ onClose, closeModal }) {
               text="continue_with"
             />
           </GoogleOAuthProvider>
+          <ToastContainer />
         </div>
       </div>
     </div>

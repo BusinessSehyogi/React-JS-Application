@@ -25,7 +25,6 @@ const FounderDashboard = () => {
         }
         const data = await response.json();
         setFounderData({ businessIdeas: data }); // Store the fetched data
-        console.log(data,"--Dashboard data")
       } catch (error) {
         console.error('Error fetching founder data:', error);
       }
@@ -42,7 +41,7 @@ const FounderDashboard = () => {
     try {
       const url = `http://${globalVariable.value}/deletePost/${postId}`;
       const response = await fetch(url, {
-        method: 'DELETE',
+        method: 'GET',
       });
 
       if (response.ok) {
@@ -61,6 +60,8 @@ const FounderDashboard = () => {
     }
   };
 
+
+
   const handleEditProfileClick = () => {
     setEditProfileOpen(true); // Open the edit profile modal
   };
@@ -76,7 +77,6 @@ const FounderDashboard = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     const searchTerm = event.target.value; // Capture the search term
-    console.log('Search term:', searchTerm);
   };
 
   const handleLogout = () => {
